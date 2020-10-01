@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hear_better/screens/dialogs/test_connection.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'HearBetter',
       theme: ThemeData(
       ),
-      home: MyHomePage(title: 'HearBetter'),
+      home: testConnection(),
     );
   }
 }
