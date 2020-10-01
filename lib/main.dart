@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'HearBetter',
       theme: ThemeData(
       ),
-      home: testConnection(),
+      home: TestConnection(),
     );
   }
 }

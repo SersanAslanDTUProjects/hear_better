@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class testConnection extends StatefulWidget {
+class TestConnection extends StatefulWidget {
   @override
-  _testConnectionState createState() => _testConnectionState();
+  _TestConnectionState createState() => _TestConnectionState();
 }
 
-class _testConnectionState extends State<testConnection> {
+class _TestConnectionState extends State<TestConnection> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
