@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-class TestPreperationDeviceConnection extends StatefulWidget {
+class TestPreperationVolume extends StatefulWidget {
   @override
-  _TestPreperationDeviceConnectionState createState() =>
-      _TestPreperationDeviceConnectionState();
+  _TestPreperationVolumeState createState() => _TestPreperationVolumeState();
 }
 
-class _TestPreperationDeviceConnectionState
-    extends State<TestPreperationDeviceConnection> {
+class _TestPreperationVolumeState extends State<TestPreperationVolume> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +19,7 @@ class _TestPreperationDeviceConnectionState
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'Connect your device',
+                      'Put volume on Max',
                       style: TextStyle(
                         fontSize: 36.0,
                       ),
@@ -36,30 +34,19 @@ class _TestPreperationDeviceConnectionState
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Image.asset(
-                      'assets/images/test_prep_images/headset.png',
+                      'assets/images/test_prep_images/volume.png',
                     ),
                   ],
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(0, 75, 0, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Image.asset(
-                      'assets/images/test_prep_images/earplugs.png',
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.fromLTRB(0, 100, 0, 0),
+                margin: EdgeInsets.fromLTRB(0, 150, 0, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     RawMaterialButton(
                       onPressed: () {
-                        // TODO: Navigate to Hella's "establish connection" pop up
+                        // TODO: Check if the volume is max before getting to the next step
                       },
                       fillColor: Colors.greenAccent,
                       child: Icon(

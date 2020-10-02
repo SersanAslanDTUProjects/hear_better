@@ -28,6 +28,7 @@ class _TestNoiceAnalyzationState extends State<TestNoiceAnalyzation> {
       new AssetImage('assets/images/test_prep_images/failed_surrounding.png');
 
   _TestNoiceAnalyzationState() {
+    //TODO: Don't do it with a timer like this, but a timer for getting data from surrounding
     _timer = new Timer(const Duration(seconds: 1), () {
       setState(() {
         if (_isPressed == true) {
@@ -89,7 +90,11 @@ class _TestNoiceAnalyzationState extends State<TestNoiceAnalyzation> {
                                 builder: (context) =>
                                     TestPreperationDeviceConnection()));
                       },
-                      child: Text('OK'),
+                      child: Text(
+                        'OK',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      color: Colors.blueAccent,
                     ),
                     visible: _showBtn,
                   ),
