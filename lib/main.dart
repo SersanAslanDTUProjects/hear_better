@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hear_better/screens/dialogs/test_connection.dart';
+import 'file:///C:/Users/Helle/hear_better/lib/screens/dialogs/test_connection/test_connection.dart';
 
 void main() {
   runApp(MyApp());
