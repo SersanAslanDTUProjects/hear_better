@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hear_better/screens/result.dart';
 import 'package:hear_better/screens/test_prep_screens/test_prep_deviceConnection.dart';
 import 'package:hear_better/screens/test_prep_screens/test_prep_environment.dart';
 import 'package:hear_better/screens/test_prep_screens/test_prep_startTestScreen.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'HearBetter',
       theme: ThemeData(),
-      home: /* TestPreperationEnvironment() */ /* TestPreperationDeviceConnection() */ /* TestPreperationVolume() */ TestPreperationStartTest(),
+      home: ResultScreen(),
     );
   }
 }
