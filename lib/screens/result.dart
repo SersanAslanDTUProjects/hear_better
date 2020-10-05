@@ -9,26 +9,58 @@ class ResultScreen extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.blue
       ),
-
-        body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
+      body: ListView(
+        children: <Widget>[
+          Container(
+              margin: EdgeInsets.fromLTRB(0, 50, 0, 30) ,
+              child: Center(
+                child: Text(
                   'Your hearing is normal',
                   style: TextStyle(
                     fontSize: 28.0,
-                    fontWeight: FontWeight.bold,
                     letterSpacing: 1.0,
-                    fontFamily: 'IndieFlower',
                   ),
                 ),
-              Image(
-                image: AssetImage('assets/images/result-screen/audiogram.png'),
+              )
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
+
+            child: Image(
+              image: AssetImage('assets/images/result-screen/Good.png'),
+            ),
+          ),
+          Row(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.fromLTRB(70, 0, 10, 20) ,
+                child: Image(
+                  image: AssetImage('assets/images/result-screen/solid_light-bulb.png'),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Listen to music on lower volume',
+                  textAlign: TextAlign.center,
+                ),
               )
             ],
+          ),
+          Image(
+            image: AssetImage('assets/images/result-screen/audiogram.png'),
+          ),
+          Container(
+            child: Image(
+              image: AssetImage('assets/images/result-screen/Full-Green.png'),
             ),
-        ),
+          ),
+          Container(
+            child: Image(
+              image: AssetImage('assets/images/result-screen/Full-Blue.png'),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
