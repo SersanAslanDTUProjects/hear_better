@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hear_better/screens/home.dart';
+import 'package:hear_better/screens/test_prep_screens/test_prep_deviceConnection.dart';
+import 'package:hear_better/screens/test_prep_screens/test_prep_environment.dart';
+import 'package:hear_better/screens/test_prep_screens/test_prep_startTestScreen.dart';
+import 'package:hear_better/screens/test_prep_screens/test_prep_volume.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +21,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+/* class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -101,3 +105,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+ */
