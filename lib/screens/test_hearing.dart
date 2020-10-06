@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -53,8 +55,31 @@ class TestProgressIndicator extends StatefulWidget {
 }
 
 class _TestProgressIndicatorState extends State<TestProgressIndicator> {
+
+  double progress = 0;
+
+  // TODO make timer functionality external?
+  void startTimer() {
+    new Timer.periodic(
+      Duration(seconds: 1),
+          (Timer timer) => setState(
+            () {
+          if (progress == 1) {
+            timer.cancel();
+            // TODO navigate to results here?
+          } else {
+            progress += 0.001;
+          }
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return LinearProgressIndicator();
+    startTimer();
+    return LinearProgressIndicator(
+      value: progress,
+    );
   }
 }
