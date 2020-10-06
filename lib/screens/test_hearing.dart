@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hear_better/screens/result.dart';
 
 class TestHearing extends StatelessWidget {
   @override
@@ -59,25 +60,29 @@ class _TestProgressIndicatorState extends State<TestProgressIndicator> {
   double progress = 0;
 
   // TODO make timer functionality external?
-  void startTimer() {
-    new Timer.periodic(
-      Duration(seconds: 1),
-          (Timer timer) => setState(
-            () {
-          if (progress == 1) {
-            timer.cancel();
-            // TODO navigate to results here?
-          } else {
-            progress += 0.001;
-          }
-        },
-      ),
-    );
+  void startTimer(BuildContext context) {
+    new Timer(Duration(seconds: 1, milliseconds: 2), (){setState(() {
+            if (progress == 1) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultScreen(),
+                ),
+              );
+              progress++;
+              // TODO navigate to results here?
+            } else {
+              progress += 0.2;
+            }
+        });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    startTimer();
+    if (progress <= 1) {
+      startTimer(context);
+    }
     return LinearProgressIndicator(
       value: progress,
     );
