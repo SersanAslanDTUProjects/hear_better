@@ -46,6 +46,11 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/test_prep_images/
+    - assets/no.png
+    - assets/yes.png
+    - assets/rightEar.png
+    - assets/leftEar.png
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
