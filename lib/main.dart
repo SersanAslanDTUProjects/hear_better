@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/Helle/hear_better/lib/screens/dialogs/test_connection/test_connection.dart';
 import 'package:hear_better/screens/test_prep_screens/test_prep_deviceConnection.dart';
 import 'package:hear_better/screens/test_prep_screens/test_prep_environment.dart';
 import 'package:hear_better/screens/test_prep_screens/test_prep_startTestScreen.dart';
