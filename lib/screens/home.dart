@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hear_better/screens/test_prep_screens/test_prep_environment.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -21,7 +22,13 @@ class Home extends StatelessWidget {
           ),
           Container(
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TestPreperationEnvironment(),
+                    ));
+              },
               padding: const EdgeInsets.all(20),
               child: Text(
                 "Test your hearing",
