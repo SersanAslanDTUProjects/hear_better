@@ -1,57 +1,49 @@
 import 'package:flutter/material.dart';
 
-
-
 class EarTest extends StatefulWidget {
   @override
   _EarTestState createState() => _EarTestState();
 }
 
 class _EarTestState extends State<EarTest> {
-  String testingEar ="assets/rightEar.png";
-
+  String testingEar = "assets/rightEar.png";
 
   @override
-  void leftEarTest(){
+  void leftEarTest() {
     setState(() {
-      testingEar = "assets/leftEar.png";
+      this.testingEar = "assets/leftEar.png";
     });
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(
-        "Testing connection",
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 30),
-      ),
-      content: Container(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Image.asset(
-              testingEar,
-              alignment: Alignment.center,
-            ),
-            Center(
-              child: Align(
+        title: Text(
+          "Testing connection",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 30),
+        ),
+        content: Container(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Center(
+                child: Image.asset(testingEar, alignment: Alignment.center),
+              ),
+              Align(
                 child: Text(
                   "Do you hear the sound?",
                   style: TextStyle(fontSize: 20),
                 ),
               ),
-            ),
-            Container(
-              child: Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   FlatButton(
                       onPressed: () {
+                        Navigator.of(context).pop();
+                        //Think there is a better way ^
                         showDialog(
                           barrierDismissible: false,
                           context: context,
@@ -59,22 +51,22 @@ class _EarTestState extends State<EarTest> {
                               _cancelPopUp(context),
                           //should eliminate itself
                         );
-                        // Navigator.of(context).pop();
                       },
                       child: Image.asset('assets/no.png')),
                   FlatButton(
                     onPressed: () {
+                      if (testingEar == "assets/leftEar.png") {
+                        Navigator.of(context).pop();
+                      }
                       leftEarTest();
                     },
                     child: Image.asset('assets/yes.png'),
                   ),
                 ],
               ),
-            ),
-          ],
-        ),
-      ),
-    );
+            ],
+          ),
+        ));
   }
 
   Widget _cancelPopUp(BuildContext context) {
@@ -90,7 +82,7 @@ class _EarTestState extends State<EarTest> {
         ],
       ),
       actions: [
-        new FlatButton(
+        FlatButton(
           onPressed: () {
             Navigator.of(context).pop();
             // navigate back to "connect your device
