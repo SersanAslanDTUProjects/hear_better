@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hear_better/screens/test_hearing.dart';
 
 class TestPreperationStartTest extends StatefulWidget {
   @override
@@ -51,7 +52,12 @@ class _TestPreperationStartTestState extends State<TestPreperationStartTest> {
                       width: (MediaQuery.of(context).size.width) / 2,
                       child: RaisedButton(
                         onPressed: () {
-                          // TODO: Show the new activity for the initial test.
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TestHearing(),
+                            ),
+                          );
                         },
                         child: Text(
                           'Start',
