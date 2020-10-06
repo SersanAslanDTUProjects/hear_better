@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hear_better/screens/dialogs/ear_test_connection.dart';
 
 class TestPreperationDeviceConnection extends StatefulWidget {
   @override
@@ -59,7 +60,11 @@ class _TestPreperationDeviceConnectionState
                   children: <Widget>[
                     RawMaterialButton(
                       onPressed: () {
-                        // TODO: Navigate to Hella's "establish connection" pop up
+                        showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (BuildContext context) => EarTest(),
+                        );
                       },
                       fillColor: Colors.greenAccent,
                       child: Icon(

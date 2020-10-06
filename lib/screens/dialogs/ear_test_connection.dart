@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hear_better/screens/dialogs/cancel_test.dart';
+import 'package:hear_better/screens/test_prep_screens/test_prep_volume.dart';
 
 class EarTest extends StatefulWidget {
   @override
@@ -6,12 +8,12 @@ class EarTest extends StatefulWidget {
 }
 
 class _EarTestState extends State<EarTest> {
-  String testingEar = "assets/rightEar.png";
+  String testingEar = "assets/images/test_connection_images/rightEar.png";
 
   @override
   void leftEarTest() {
     setState(() {
-      this.testingEar = "assets/leftEar.png";
+      this.testingEar = "assets/images/test_connection_images/leftEar.png";
     });
   }
 
@@ -48,49 +50,31 @@ class _EarTestState extends State<EarTest> {
                           barrierDismissible: false,
                           context: context,
                           builder: (BuildContext context) =>
-                              _cancelPopUp(context),
+                              CancelDialog(context),
                           //should eliminate itself
                         );
                       },
-                      child: Image.asset('assets/no.png')),
+                      child: Image.asset(
+                          'assets/images/test_connection_images/no.png')),
                   FlatButton(
                     onPressed: () {
-                      if (testingEar == "assets/leftEar.png") {
-                        Navigator.of(context).pop();
+                      if (testingEar ==
+                          "assets/images/test_connection_images/leftEar.png") {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TestPreperationVolume(),
+                            ));
                       }
                       leftEarTest();
                     },
-                    child: Image.asset('assets/yes.png'),
+                    child: Image.asset(
+                        'assets/images/test_connection_images/yes.png'),
                   ),
                 ],
               ),
             ],
           ),
         ));
-  }
-
-  Widget _cancelPopUp(BuildContext context) {
-    return AlertDialog(
-      title: Text("Check your device connection"),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Your device needs to be properly \n connected in order to conduct the hearing test",
-          )
-        ],
-      ),
-      actions: [
-        FlatButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-            // navigate back to "connect your device
-            // --> current case homescreen.
-          },
-          child: Text("OK"),
-        )
-      ],
-    );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hear_better/screens/test_prep_screens/test_prep_environment.dart';
+import 'package:hear_better/screens/test_prep_screens/test_prep_startTestScreen.dart';
 
 class TestPreperationVolume extends StatefulWidget {
   @override
@@ -47,6 +49,12 @@ class _TestPreperationVolumeState extends State<TestPreperationVolume> {
                     RawMaterialButton(
                       onPressed: () {
                         // TODO: Check if the volume is max before getting to the next step
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TestPreperationStartTest(),
+                          ),
+                        );
                       },
                       fillColor: Colors.greenAccent,
                       child: Icon(
