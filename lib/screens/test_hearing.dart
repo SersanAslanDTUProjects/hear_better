@@ -22,7 +22,8 @@ class TestHearing extends StatelessWidget {
               flex: 1,
               child: Container(
                 alignment: Alignment.center,
-                child: Text("Progress"),
+                padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 50.0),
+                child: TestProgressIndicator(),
               ),
             ),
             Expanded(
@@ -43,5 +44,17 @@ class TestHearing extends StatelessWidget {
           ],
         )
     );
+  }
+}
+
+class TestProgressIndicator extends StatefulWidget {
+  @override
+  _TestProgressIndicatorState createState() => _TestProgressIndicatorState();
+}
+
+class _TestProgressIndicatorState extends State<TestProgressIndicator> {
+  @override
+  Widget build(BuildContext context) {
+    return LinearProgressIndicator();
   }
 }
