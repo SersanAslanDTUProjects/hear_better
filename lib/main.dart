@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hear_better/screens/home.dart';
-import 'package:hear_better/screens/result.dart';
-import 'package:hear_better/screens/test_prep_screens/test_prep_deviceConnection.dart';
-import 'package:hear_better/screens/test_prep_screens/test_prep_environment.dart';
-import 'package:hear_better/screens/test_prep_screens/test_prep_startTestScreen.dart';
-import 'package:hear_better/screens/test_prep_screens/test_prep_volume.dart';
 
 void main() {
   runApp(MyApp());
