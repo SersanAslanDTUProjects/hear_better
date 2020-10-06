@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class TestHearing extends StatefulWidget {
   @override
@@ -35,8 +36,11 @@ class _TestHearingState extends State<TestHearing> {
               alignment: Alignment.center,
               child: SizedBox.expand(
                 child: FlatButton(
-                  onLongPress: () {},
-                  child: Icon(Icons.hearing, size: 150.0,),
+                  onLongPress: () {
+                    HapticFeedback.mediumImpact();
+                    // TODO add secondary feed back if vibration not enabled or inform user enable vibration when boarding the app
+                  },
+                  child: Icon(Icons.hearing, size: 150.0,), // TODO animation or better icon
                 ),
               ),
             ),
