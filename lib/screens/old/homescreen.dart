@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:hear_better/screens/test_prep_screens/test_prep_environment.dart';
 
-class Home extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -44,3 +44,4 @@ class Home extends StatelessWidget {
     );
   }
 }
+ */

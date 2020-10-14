@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hear_better/screens/test_hearing.dart';
+import 'package:hear_better/screens/old/test_hearing.dart';
 
 class TestPreperationStartTest extends StatefulWidget {
   @override

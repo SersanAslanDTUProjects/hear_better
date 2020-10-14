@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:hear_better/screens/home.dart';
+import 'package:flutter/material.dart' hide Router;
+import 'package:hear_better/screens/authentication/authentication_screen.dart';
+import 'package:hear_better/screens/routes/router.gr.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'HearBetter',
       theme: ThemeData(),
-      home: Home(),
+      initialRoute: Router.authenticationScreen,
+      onGenerateRoute: Router.onGenerateRoute,
+      navigatorKey: Router.navigatorKey,
+      home: AuthenticationScreen(),
     );
   }
 }
