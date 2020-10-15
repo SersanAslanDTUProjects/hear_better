@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:hear_better/screens/ui/base_widget.dart';
+import 'package:hear_better/screens/ui/orientation_layout.dart';
+import 'package:hear_better/screens/ui/screen_type_layout.dart';
 
-class AuthenticationScreen extends StatefulWidget {
+import 'authentication_screen_mobile.dart';
+import 'authentication_screen_tablet.dart';
+
+class AuthenticationScreen extends StatelessWidget {
   const AuthenticationScreen({Key key}) : super(key: key);
 
   @override
-  _AuthenticationScreenState createState() => _AuthenticationScreenState();
-}
-
-class _AuthenticationScreenState extends State<AuthenticationScreen> {
-  @override
   Widget build(BuildContext context) {
-    return BaseWidget(
-      builder: (context, responsiveInformation) {
-        return Scaffold(); // TODO: Implement responsive authentication screen UI
-      },
+    return ScreenTypeLayout(
+      mobile: OrientationLayout(
+        potrait: AuthenticationScreenMobile(),
+      ),
+      //TODO: If anyone wants to implement the UI for tablets, then go into that class.
+      tablet: OrientationLayout(
+        potrait: AuthenticationScreenTablet(),
+      ),
     );
   }
 }

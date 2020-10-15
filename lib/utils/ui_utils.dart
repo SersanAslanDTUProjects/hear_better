@@ -2,21 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:hear_better/screens/ui/device_screen_type.dart';
 
 DeviceScreenType getDeviceScreenType(MediaQueryData mediaQuery) {
-  var orientation = mediaQuery.orientation;
-
-  double deviceWidth = 0;
-
-  if (orientation == Orientation.landscape) {
-    deviceWidth = mediaQuery.size.height;
-  } else {
-    deviceWidth = mediaQuery.size.width;
-  }
+  double deviceWidth = mediaQuery.size.shortestSide;
 
   if (deviceWidth > 950) {
     return DeviceScreenType.Desktop;
-  } else if (deviceWidth > 600) {
-    return DeviceScreenType.Tablet;
-  } else {
-    return DeviceScreenType.Mobile;
   }
+  if (deviceWidth > 600) {
+    return DeviceScreenType.Tablet;
+  }
+
+  return DeviceScreenType.Mobile;
 }
