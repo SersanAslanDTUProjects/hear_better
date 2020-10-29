@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:hear_better/models/audiogram.dart';
 
+
 class ResultScreen extends StatelessWidget {
   List<charts.Series> seriesList = createData();
 
