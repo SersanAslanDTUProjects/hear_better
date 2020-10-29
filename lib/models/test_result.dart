@@ -1,12 +1,11 @@
 import 'package:hear_better/models/audiogram.dart';
 
 class TestResult {
-
   DateTime _timeStamp;
   Audiogram _audiogram;
   double _score;
 
-  TestResult(Audiogram audiogram){
+  TestResult(Audiogram audiogram) {
     this._audiogram = audiogram;
     _timeStamp = new DateTime.now();
     calcScore(audiogram);

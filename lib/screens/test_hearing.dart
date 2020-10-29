@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hear_better/screens/result.dart';
+import 'file:///C:/Users/Helle/hear_better/lib/screens/test_result/result.dart';
 
 class TestHearing extends StatelessWidget {
   @override
