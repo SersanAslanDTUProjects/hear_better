@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:hear_better/models/audiogram.dart';
+import 'package:hear_better/screens/test_result/LineChart.dart';
+
+import 'comparing_results.dart';
 
 
 class ResultScreen extends StatelessWidget {
-  List<charts.Series> seriesList = createData();
+  final List<charts.Series> seriesList = createData();
+  final bool animate = true;
 
-  Audiogram testGraf = new Audiogram();
+  final testGraf = new Audiogram();
 
 
   static List<charts.Series<TestAudiogram, String>> createData() {
@@ -39,54 +43,25 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text('Hear better'),
-          centerTitle: true,
-          backgroundColor: Colors.blue
-      ),
       body: ListView(
         children: <Widget>[
           Container(
-              margin: EdgeInsets.fromLTRB(0, 50, 0, 30) ,
+              margin: EdgeInsets.fromLTRB(0, 50, 0, 0) ,
               child: Center(
-                child: Text(
-                  'Your hearing is normal',
-                  style: TextStyle(
-                    fontSize: 28.0,
-                    letterSpacing: 1.0,
-                  ),
-                ),
+                  child: Container(
+                    width: 200,
+                    height: 200,
+                    child: Results(),
+                  )
               )
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
-
-            child: Image(
-              image: AssetImage('assets/images/result-screen/Good.png'),
-            ),
-          ),
-          Row(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.fromLTRB(70, 0, 10, 20) ,
-                child: Image(
-                  image: AssetImage('assets/images/result-screen/solid_light-bulb.png'),
-                ),
-              ),
-              Center(
-                child: Text(
-                  'Listen to music on lower volume',
-                  textAlign: TextAlign.center,
-                ),
-              )
-            ],
-          ),
-          Image(
-            image: AssetImage('assets/images/result-screen/audiogram.png'),
+            width: 250,
+            height: 250,
+            child: NumericComboLinePointChart.withSampleData(),
           ),
           Container(
             child:
-            //barChart(),
             Image(
               image: AssetImage('assets/images/result-screen/Full-Green.png'),
             ),

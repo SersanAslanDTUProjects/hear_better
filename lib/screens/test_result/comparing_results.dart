@@ -32,12 +32,11 @@ class _ResultsState extends State<Results> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        alignment: Alignment.bottomCenter,
-        padding: EdgeInsets.all(75.0),
+
         child: Column(
           children: <Widget>[
             Container(
-                margin: EdgeInsets.fromLTRB(0,0, 0, 50),
+                margin: EdgeInsets.fromLTRB(0,0, 0, 30),
                 child: Center(
                   child: Text(
                     displayTextOfResult(userTestResult),
@@ -47,7 +46,6 @@ class _ResultsState extends State<Results> {
                   ),
                 )),
             LinearPercentIndicator(
-              width: 250,
               lineHeight: 30,
               progressColor: color,
               backgroundColor: Colors.grey,

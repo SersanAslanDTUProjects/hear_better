@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hear_better/screens/home.dart';
 import 'package:hear_better/screens/test_result/comparing_results.dart';
+import 'package:hear_better/screens/test_result/result.dart';
+import 'package:hear_better/screens/test_result/LineChart.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'HearBetter',
       theme: ThemeData(),
-      home: Results(),
+      home: ResultScreen()//NumericComboLinePointChart.withSampleData(),
     );
   }
 }
