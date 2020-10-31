@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hear_better/screens/ui/screen_type_layout.dart';
 
 class OrientationLayout extends StatelessWidget {
   final Widget landscape;

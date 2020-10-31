@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:hear_better/screens/dialogs/cancel_test.dart';
-import 'package:hear_better/screens/test_prep_screens/test_prep_volume.dart';
+import 'package:flutter/material.dart' hide Router;
+import 'package:hear_better/screens/hearingtest/preperation/hearing_test_preperation_volume_screen_mobile.dart';
+import 'package:hear_better/theme/routes/router.gr.dart';
+
+import 'cancel_test.dart';
 
 class EarTest extends StatefulWidget {
   @override
@@ -60,11 +62,8 @@ class _EarTestState extends State<EarTest> {
                     onPressed: () {
                       if (testingEar ==
                           "assets/images/test_connection_images/leftEar.png") {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => TestPreperationVolume(),
-                            ));
+                        Router.navigator.pushNamed(
+                            Router.hearingTestPreperationVolumeScreenMobile);
                       }
                       leftEarTest();
                     },

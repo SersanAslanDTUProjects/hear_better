@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Router;
+import 'package:hear_better/theme/routes/router.gr.dart';
 
 class CancelDialog extends StatelessWidget {
   CancelDialog(BuildContext context);
@@ -19,7 +20,7 @@ class CancelDialog extends StatelessWidget {
       actions: [
         FlatButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Router.navigator.pop();
             // navigate back to "connect your device
             // --> current case homescreen.
           },
