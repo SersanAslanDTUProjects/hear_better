@@ -27,12 +27,50 @@ class NumericComboLinePointChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       backgroundColor: Colors.transparent,
         body: Container(
             child: new charts.NumericComboChart(seriesList,
                 animate: animate,
                 // Configure the default renderer as a line renderer. This will be used
                 // for any series that does not define a rendererIdKey.
                 defaultRenderer: new charts.LineRendererConfig(),
+                defaultInteractions: false,
+                domainAxis: new charts.NumericAxisSpec(
+                    tickProviderSpec: new charts.StaticNumericTickProviderSpec(
+                      // Create the ticks to be used the domain axis.
+                      <charts.TickSpec<num>>[
+                        new charts.TickSpec(250, label: '250', style: charts.TextStyleSpec(fontSize: 14)),
+                        //new charts.TickSpec(500, label: '500', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(1000, label: '1000', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(2000, label: '2000', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(4000, label: '4000', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(6000, label: '6000', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(8000, label: '8000', style: charts.TextStyleSpec(fontSize: 14)),
+                      ],
+                    )),
+                primaryMeasureAxis: new charts.NumericAxisSpec(
+                    renderSpec: charts.GridlineRendererSpec(
+                        labelOffsetFromAxisPx: 10,
+                        labelAnchor: charts.TickLabelAnchor.after,
+                        lineStyle: charts.LineStyleSpec(
+                          color: charts.MaterialPalette.transparent,
+                          thickness: 0,
+                        )
+                  ),
+                    tickProviderSpec: new charts.StaticNumericTickProviderSpec(
+                      // Create the ticks to be used the domain axis.
+                      <charts.TickSpec<num>>[
+                        new charts.TickSpec(10, label: '10', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(20, label: '20', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(30, label: '30', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(40, label: '40', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(50, label: '50', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(60, label: '60', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(70, label: '70', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(80, label: '80', style: charts.TextStyleSpec(fontSize: 14)),
+                      ],
+                    )
+                ),
                 // Custom renderer configuration for the point series.
                 customSeriesRenderers: [
                   new charts.PointRendererConfig(
@@ -76,6 +114,7 @@ class NumericComboLinePointChart extends StatelessWidget {
         colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
         domainFn: (LinearSales sales, _) => sales.year,
         measureFn: (LinearSales sales, _) => sales.sales,
+
         data: tableSalesData,
       ),
       new charts.Series<LinearSales, int>(

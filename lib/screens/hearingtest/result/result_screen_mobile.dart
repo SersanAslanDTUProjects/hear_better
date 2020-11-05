@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'file:///C:/Users/magnu/Documents/GitHub/hear_better/lib/screens/hearingtest/result/comparing_results.dart';
 import 'package:hear_better/theme/app_theme.dart';
+
+import 'LineChart.dart';
 
 class ResultScreenMobile extends StatelessWidget {
   @override
@@ -19,41 +22,20 @@ class ResultScreenMobile extends StatelessWidget {
         body: ListView(
           children: <Widget>[
             Container(
-                margin: EdgeInsets.fromLTRB(0, 50, 0, 30),
+                margin: EdgeInsets.fromLTRB(0, 50, 0, 0) ,
                 child: Center(
-                  child: Text(
-                    'Your hearing is normal',
-                    style: TextStyle(
-                      fontSize: 28.0,
-                      letterSpacing: 1.0,
-                    ),
-                  ),
-                )),
-            Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
-              child: Image(
-                image: AssetImage('assets/images/result-screen/Good.png'),
-              ),
-            ),
-            Row(
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(70, 0, 10, 20),
-                  child: Image(
-                    image: AssetImage(
-                        'assets/images/result-screen/solid_light-bulb.png'),
-                  ),
-                ),
-                Center(
-                  child: Text(
-                    'Listen to music on lower volume',
-                    textAlign: TextAlign.center,
-                  ),
+                    child: Container(
+                      width: 200,
+                      height: 200,
+                      child: Results(),
+                    )
                 )
-              ],
             ),
-            Image(
-              image: AssetImage('assets/images/result-screen/audiogram.png'),
+            Container(
+              padding: EdgeInsets.all(30),
+              width: 200,
+              height: 250,
+              child: NumericComboLinePointChart.withSampleData(),
             ),
             Container(
               child: Image(

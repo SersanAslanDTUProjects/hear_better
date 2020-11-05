@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:hear_better/models/audiogram.dart';
-import 'package:hear_better/screens/test_result/LineChart.dart';
+import 'file:///C:/Users/magnu/Documents/GitHub/hear_better/lib/screens/hearingtest/result/LineChart.dart';
 
-import 'comparing_results.dart';
+import '../hearingtest/result/comparing_results.dart';
 
 
 class ResultScreen extends StatelessWidget {

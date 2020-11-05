@@ -31,6 +31,7 @@ class _ResultsState extends State<Results> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Container(
 
         child: Column(
