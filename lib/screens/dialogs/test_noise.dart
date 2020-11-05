@@ -1,7 +1,9 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:hear_better/screens/test_prep_screens/test_prep_deviceConnection.dart';
+import 'package:flutter/material.dart' hide Router;
+import 'package:hear_better/screens/hearingtest/preperation/hearing_test_preperation_device_connection_screen_mobile.dart';
+import 'package:hear_better/theme/app_theme.dart';
+import 'package:hear_better/theme/routes/router.gr.dart';
 
 class TestNoiceAnalyzation extends StatefulWidget {
   @override
@@ -84,17 +86,14 @@ class _TestNoiceAnalyzationState extends State<TestNoiceAnalyzation> {
                     child: RaisedButton(
                       onPressed: () {
                         //TODO: This needs to be implemented properly or whatever Siff wants :-)
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    TestPreperationDeviceConnection()));
+                        Router.navigator.pushNamed(Router
+                            .hearingTestPreperationDeviceConnectionScreenMobile);
                       },
                       child: Text(
                         'OK',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: AppTheme.colors.white),
                       ),
-                      color: Colors.blueAccent,
+                      color: AppTheme.colors.primaryBlue,
                     ),
                     visible: _showBtn,
                   ),
