@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hear_better/models/test_result.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class Results extends StatefulWidget {
@@ -8,7 +7,7 @@ class Results extends StatefulWidget {
 }
 
 class _ResultsState extends State<Results> {
-  double userTestResult = 60/ 100; //get from test_result
+  double userTestResult = 60 / 100; //get from test_result
   double normalHearing = 0.5; //what is the interval for a normal hearing
   double lowHearing = 0.3;
   double goodHearing = 1;
@@ -33,11 +32,10 @@ class _ResultsState extends State<Results> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
-
         child: Column(
           children: <Widget>[
             Container(
-                margin: EdgeInsets.fromLTRB(0,0, 0, 30),
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
                 child: Center(
                   child: Text(
                     displayTextOfResult(userTestResult),
