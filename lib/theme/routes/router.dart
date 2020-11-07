@@ -13,6 +13,7 @@ import 'package:hear_better/screens/home/home_screen_mobile.dart';
 
 @autoRouter
 class $Router {
+  //flutter pub run build_runner watch --delete-conflicting-outputs
   @initial
   HomeScreen homeScreen;
   HomeScreenMobile homeScreenMobile;
