@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:hear_better/models/audiogram.dart';
-import 'file:///C:/Users/magnu/Documents/GitHub/hear_better/lib/screens/hearingtest/result/LineChart.dart';
-
+import 'package:hear_better/screens/hearingtest/result/LineChart.dart';
 import '../hearingtest/result/comparing_results.dart';
 
 
