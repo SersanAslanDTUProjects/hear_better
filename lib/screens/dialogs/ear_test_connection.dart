@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' hide Router;
 import 'package:hear_better/screens/hearingtest/preperation/hearing_test_preperation_volume_screen_mobile.dart';
 import 'package:hear_better/theme/routes/router.gr.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 import 'cancel_test.dart';
 
@@ -12,15 +13,28 @@ class EarTest extends StatefulWidget {
 class _EarTestState extends State<EarTest> {
   String testingEar = "assets/images/test_connection_images/rightEar.png";
 
-  @override
+  AudioCache audioCache = AudioCache();
+
+  bool soundPlayed = false;
+
+  playLocal() async {
+    await audioCache.play('sounds/beep.mp3');
+    audioCache.clear('beep.mp3');
+  }
+
   void leftEarTest() {
     setState(() {
       this.testingEar = "assets/images/test_connection_images/leftEar.png";
+      if (soundPlayed == false) {
+        playLocal();
+        soundPlayed = true;
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    playLocal();
     return AlertDialog(
         title: Text(
           "Testing connection",
@@ -65,6 +79,7 @@ class _EarTestState extends State<EarTest> {
                         Router.navigator.pushNamed(
                             Router.hearingTestPreperationVolumeScreenMobile);
                       }
+
                       leftEarTest();
                     },
                     child: Image.asset(
