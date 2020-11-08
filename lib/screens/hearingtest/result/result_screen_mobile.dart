@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/magnu/Documents/GitHub/hear_better/lib/screens/hearingtest/result/comparing_results.dart';
+import 'package:hear_better/screens/hearingtest/result/comparing_results.dart';
 import 'package:hear_better/theme/app_theme.dart';
 
 import 'LineChart.dart';
@@ -25,7 +25,7 @@ class ResultScreenMobile extends StatelessWidget {
                 margin: EdgeInsets.fromLTRB(0, 50, 0, 0) ,
                 child: Center(
                     child: Container(
-                      width: 200,
+                      width: 300,
                       height: 200,
                       child: Results(),
                     )
