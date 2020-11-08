@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1078243313824",
+    "firebase_url": "https://hearbetter-4fdf9.firebaseio.com",
+    "project_id": "hearbetter-4fdf9",
+    "storage_bucket": "hearbetter-4fdf9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078243313824:android:4810590da682d8b5e061c5",
+        "android_client_info": {
+          "package_name": "com.example.hear_better"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078243313824-g7hatr23hbskjmfn0n51gadrb24bkqc1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGXbOUi8nnHo7MtnWLRvLT7Dbilxx63Vg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078243313824-g7hatr23hbskjmfn0n51gadrb24bkqc1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

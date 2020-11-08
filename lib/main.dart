@@ -1,21 +1,30 @@
 import 'package:flutter/material.dart' hide Router;
-import 'package:hear_better/theme/app_theme.dart';
+import 'package:hear_better/models/hbuser.dart';
+import 'package:hear_better/services/auth.dart';
 import 'package:hear_better/theme/routes/router.gr.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'HearBetter',
-      theme: ThemeData(),
-      initialRoute: Router.homeScreen,
-      onGenerateRoute: Router.onGenerateRoute,
-      navigatorKey: Router.navigatorKey,
+    return StreamProvider<HBUser>.value(
+      value: AuthService().user,
+      child: MaterialApp(
+        title: 'HearBetter',
+        theme: ThemeData(),
+        initialRoute: Router.wrapper,
+        onGenerateRoute: Router.onGenerateRoute,
+        navigatorKey: Router.navigatorKey,
+      ),
     );
   }
 }
