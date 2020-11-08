@@ -22,13 +22,15 @@ class ResultScreenMobile extends StatelessWidget {
         body: ListView(
           children: <Widget>[
             Container(
-                margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
-                child: Center(
-                    child: Container(
+              margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
+              child: Center(
+                child: Container(
                   width: 200,
                   height: 200,
                   child: Results(),
-                ))),
+                ),
+              ),
+            ),
             Container(
               padding: EdgeInsets.all(30),
               width: 200,

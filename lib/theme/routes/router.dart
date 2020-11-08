@@ -9,17 +9,25 @@ import 'package:hear_better/screens/hearingtest/preperation/hearing_test_prepera
 import 'package:hear_better/screens/hearingtest/preperation/hearing_test_screen_mobile.dart';
 import 'package:hear_better/screens/hearingtest/result/result_screen.dart';
 import 'package:hear_better/screens/home/home_screen.dart';
+import 'package:hear_better/screens/home/home_screen_authenticate_mobile.dart';
 import 'package:hear_better/screens/home/home_screen_mobile.dart';
+import 'package:hear_better/screens/profile/profile_screen.dart';
+import 'package:hear_better/screens/profile/profile_screen_mobile.dart';
+import 'package:hear_better/screens/wrapper.dart';
 
 @autoRouter
 class $Router {
   //flutter pub run build_runner watch --delete-conflicting-outputs
   @initial
+  Wrapper wrapper;
   HomeScreen homeScreen;
   HomeScreenMobile homeScreenMobile;
+  HomeScreenAuthenticateMobile homeScreenAuthenticateMobile;
   AuthenticationScreen authenticationScreen;
   AuthenticationScreenMobileLogin authenticationScreenMobileLogin;
   AuthenticationScreenMobileSignUp authenticationScreenMobileSignUp;
+  ProfileScreen profileScreen;
+  ProfileScreenMobile profileScreenMobile;
   HearingTestPreperationScreen hearingTestPreperationScreen;
   HearingTestPreperationDeviceConnectionScreenMobile
       hearingTestPreperationDeviceConnectionScreenMobile;
