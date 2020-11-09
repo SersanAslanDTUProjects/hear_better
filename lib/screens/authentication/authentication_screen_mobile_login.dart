@@ -53,7 +53,7 @@ class _AuthenticationScreenMobileLoginState
                 body: SafeArea(
                   child: Center(
                     child: Container(
-                      margin: EdgeInsets.all(50),
+                      margin: EdgeInsets.fromLTRB(50, 50, 50, 0),
                       child: Column(
                         children: [
                           Container(
@@ -63,7 +63,7 @@ class _AuthenticationScreenMobileLoginState
                             ),
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 10,
                           ),
                           Container(
                             child: Text(
@@ -178,6 +178,25 @@ class _AuthenticationScreenMobileLoginState
                               ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(7),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 10),
+                            child: SizedBox(
+                              height: 40,
+                              width: _screenWidth / 3,
+                              child: FlatButton(
+                                onPressed: () {
+                                  Router.navigator.pop();
+                                },
+                                child: Text(
+                                  'Back',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: AppTheme.colors.black,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
