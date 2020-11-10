@@ -15,7 +15,7 @@ class _TestNoiceAnalyzationState extends State<TestNoiceAnalyzation> {
   bool _isPressed = true;
   bool _showBtn = false;
 
-  String _analyzingText = 'Checking your \n environment’s noise \n level..';
+  String _analyzingText = 'Checking your \n environment’s noise level..';
   AssetImage _analyzingImage =
       new AssetImage('assets/images/test_prep_images/checking_surrounding.png');
 

@@ -76,7 +76,7 @@ class _HearingTestPreperationDeviceConnectionScreenMobileState
                           ],
                         ),
                       ),
-                      SizedBox(height: 100),
+                      SizedBox(height: 50),
                       Container(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,

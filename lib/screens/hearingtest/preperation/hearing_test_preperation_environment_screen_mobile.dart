@@ -48,7 +48,7 @@ class _HearingTestPreperationEnviromentScreenMobileState
                           ],
                         ),
                       ),
-                      SizedBox(height: 75),
+                      SizedBox(height: 50),
                       Container(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -61,6 +61,7 @@ class _HearingTestPreperationEnviromentScreenMobileState
                       ),
                       SizedBox(height: 150),
                       Container(
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
