@@ -12,6 +12,7 @@ class AppColors {
   final spotifyGreen = const Color(0xFF1ED760);
   final netflixRed = const Color(0xFFDB202C);
   final bluetoothBlue = const Color(0xFF0082FC);
+  final primaryYellow = const Color(0xFFFFEE58);
 
   const AppColors();
 }
