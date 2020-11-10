@@ -1,6 +1,3 @@
-import 'dart:async';
-
-import 'package:auto_route/auto_route_annotations.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:hear_better/models/hbuser.dart';
 import 'package:hear_better/services/auth.dart';
@@ -9,6 +6,7 @@ import 'package:hear_better/theme/routes/router.gr.dart';
 import 'package:hear_better/widget/loading.dart';
 import 'package:provider/provider.dart';
 import 'package:hear_better/services/database.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 class ProfileScreenMobile extends StatefulWidget {
   @override
