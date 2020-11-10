@@ -8,7 +8,12 @@ class Results extends StatefulWidget {
   @override
   _ResultsState createState() => _ResultsState();
 }
-
+double userTestResult = 60 / 100; //get from test_result
+double normalHearing = 0.5; //what is the interval for a normal hearing
+double lowHearing = 0.3;
+double goodHearing = 1;
+String resultsOfHearing = "----";
+Color color = Colors.grey;
 class _ResultsState extends State<Results> {
   String displayTextOfResult(double userTestResult) {
     setState(() {
