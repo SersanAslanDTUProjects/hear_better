@@ -5,6 +5,7 @@ import 'package:hear_better/services/auth.dart';
 import 'package:hear_better/theme/app_theme.dart';
 import 'package:hear_better/theme/routes/router.gr.dart';
 import 'package:hear_better/widget/loading.dart';
+import 'package:intl/intl.dart';
 
 class AuthenticationScreenMobileSignUp extends StatefulWidget {
   @override
@@ -19,6 +20,8 @@ class _AuthenticationScreenMobileSignUpState
   String _username = '';
   String _email = '';
   String _password = '';
+  String _dateOfBirth = '';
+  String _profession = 'Not Set';
   String _error = '';
   bool _loading = false;
 
@@ -26,6 +29,9 @@ class _AuthenticationScreenMobileSignUpState
   Widget build(BuildContext context) {
     double _screenWidth = MediaQuery.of(context).size.width;
     double _screenHeight = MediaQuery.of(context).size.height;
+    DateTime now = DateTime.now();
+    DateFormat formatter = DateFormat('dd-MM-yyyy');
+    _dateOfBirth = formatter.format(now);
 
     return _loading
         ? Loading()
@@ -150,7 +156,11 @@ class _AuthenticationScreenMobileSignUpState
                                           setState(() => _loading = true);
                                           dynamic result = await _auth
                                               .signUpWithEmailAndPassword(
-                                                  _username, _email, _password);
+                                                  _username,
+                                                  _email,
+                                                  _password,
+                                                  _profession,
+                                                  _dateOfBirth);
                                           if (result == null) {
                                             setState(() {
                                               _error = 'Failed to create user';

@@ -60,7 +60,9 @@ class _ProfileScreenMobileState extends State<ProfileScreenMobile> {
                                 onPressed: () => null,
                                 child: Text(
                                   "Edit",
-                                  style: TextStyle(fontSize: 20),
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: AppTheme.colors.black),
                                 ),
                               ),
                             ],
@@ -122,7 +124,7 @@ class _ProfileScreenMobileState extends State<ProfileScreenMobile> {
                                         ),
                                         Spacer(),
                                         Text(
-                                          userData.birth ?? "null",
+                                          userData.dateOfBirth ?? "none",
                                           style: TextStyle(
                                               color: AppTheme.colors.black,
                                               fontSize: 15),
