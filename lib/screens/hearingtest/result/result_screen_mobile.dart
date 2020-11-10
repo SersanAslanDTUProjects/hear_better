@@ -34,7 +34,7 @@ class ResultScreenMobile extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(30),
               width: 200,
-              height: 250,
+              height: 400,
               child: NumericComboLinePointChart.withSampleData(),
             ),
             Container(

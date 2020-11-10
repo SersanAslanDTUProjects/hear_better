@@ -45,7 +45,7 @@ class NumericComboLinePointChart extends StatelessWidget {
                         new charts.TickSpec(2000, label: '2000', style: charts.TextStyleSpec(fontSize: 14)),
                         new charts.TickSpec(4000, label: '4000', style: charts.TextStyleSpec(fontSize: 14)),
                         new charts.TickSpec(6000, label: '6000', style: charts.TextStyleSpec(fontSize: 14)),
-                        new charts.TickSpec(8000, label: '8000', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(8000, label: '8000  Hz', style: charts.TextStyleSpec(fontSize: 14)),
                       ],
                     )),
                 primaryMeasureAxis: new charts.NumericAxisSpec(
@@ -68,6 +68,7 @@ class NumericComboLinePointChart extends StatelessWidget {
                         new charts.TickSpec(60, label: '60', style: charts.TextStyleSpec(fontSize: 14)),
                         new charts.TickSpec(70, label: '70', style: charts.TextStyleSpec(fontSize: 14)),
                         new charts.TickSpec(80, label: '80', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(85, label: 'dB', style: charts.TextStyleSpec(fontSize: 14)),
                       ],
                     )
                 ),
