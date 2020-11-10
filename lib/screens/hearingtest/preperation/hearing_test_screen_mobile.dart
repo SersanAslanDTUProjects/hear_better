@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:hear_better/screens/hearingtest/result/result_screen.dart';
 import 'package:hear_better/theme/app_theme.dart';
 import 'package:hear_better/theme/routes/router.gr.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 class HearingTestMobileScreen extends StatelessWidget {
   @override
@@ -89,9 +90,16 @@ class TestProgressIndicator extends StatefulWidget {
 class _TestProgressIndicatorState extends State<TestProgressIndicator> {
   double progress = 0;
 
+  AudioCache audioCache = AudioCache();
+  playLocal() async {
+    await audioCache.play('sounds/beep.mp3');
+    audioCache.clear('beep.mp3');
+  }
+
   // TODO make timer functionality external?
   void startTimer(BuildContext context) {
     new Timer(Duration(seconds: 1, milliseconds: 2), () {
+      playLocal();
       setState(() {
         if (progress == 1) {
           Router.navigator.pushNamed(Router.resultScreen);

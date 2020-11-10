@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
     return StreamProvider<HBUser>.value(
       value: AuthService().user,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'HearBetter',
         theme: ThemeData(),
         initialRoute: Router.wrapper,

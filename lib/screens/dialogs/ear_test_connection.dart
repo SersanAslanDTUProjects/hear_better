@@ -15,20 +15,19 @@ class _EarTestState extends State<EarTest> {
 
   AudioCache audioCache = AudioCache();
 
-  bool soundPlayed = false;
+  int soundPlayed = 0;
 
   playLocal() async {
-    await audioCache.play('sounds/beep.mp3');
+    if (soundPlayed != 2) {
+      await audioCache.play('sounds/beep.mp3');
+      soundPlayed++;
+    }
     audioCache.clear('beep.mp3');
   }
 
   void leftEarTest() {
     setState(() {
       this.testingEar = "assets/images/test_connection_images/leftEar.png";
-      if (soundPlayed == false) {
-        playLocal();
-        soundPlayed = true;
-      }
     });
   }
 
