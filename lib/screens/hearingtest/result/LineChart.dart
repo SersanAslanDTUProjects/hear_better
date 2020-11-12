@@ -1,3 +1,5 @@
+import 'dart:math';
+
 /// Example of a numeric combo chart with two series rendered as lines, and a
 /// third rendered as points along the top line with a different color.
 ///
@@ -7,6 +9,7 @@
 /// the same color as the line.
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
+import 'package:hear_better/models/audiogram.dart';
 
 class NumericComboLinePointChart extends StatelessWidget {
   final List<charts.Series> seriesList;
@@ -23,7 +26,6 @@ class NumericComboLinePointChart extends StatelessWidget {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +33,10 @@ class NumericComboLinePointChart extends StatelessWidget {
         body: Container(
             child: new charts.NumericComboChart(seriesList,
                 animate: animate,
+                behaviors: [
+                  charts.SlidingViewport(),
+                  charts.PanAndZoomBehavior()
+                ],
                 // Configure the default renderer as a line renderer. This will be used
                 // for any series that does not define a rendererIdKey.
                 defaultRenderer: new charts.LineRendererConfig(),
@@ -39,13 +45,13 @@ class NumericComboLinePointChart extends StatelessWidget {
                     tickProviderSpec: new charts.StaticNumericTickProviderSpec(
                       // Create the ticks to be used the domain axis.
                       <charts.TickSpec<num>>[
-                        new charts.TickSpec(250, label: '250', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(250, label: '250', style: charts.TextStyleSpec(fontSize: 12)),
                         //new charts.TickSpec(500, label: '500', style: charts.TextStyleSpec(fontSize: 14)),
-                        new charts.TickSpec(1000, label: '1000', style: charts.TextStyleSpec(fontSize: 14)),
-                        new charts.TickSpec(2000, label: '2000', style: charts.TextStyleSpec(fontSize: 14)),
-                        new charts.TickSpec(4000, label: '4000', style: charts.TextStyleSpec(fontSize: 14)),
-                        new charts.TickSpec(6000, label: '6000', style: charts.TextStyleSpec(fontSize: 14)),
-                        new charts.TickSpec(8000, label: '8000  Hz', style: charts.TextStyleSpec(fontSize: 14)),
+                        new charts.TickSpec(1000, label: '1000', style: charts.TextStyleSpec(fontSize: 12)),
+                        new charts.TickSpec(2000, label: '2000', style: charts.TextStyleSpec(fontSize: 12)),
+                        new charts.TickSpec(4000, label: '4000', style: charts.TextStyleSpec(fontSize: 12)),
+                        new charts.TickSpec(6000, label: '6000', style: charts.TextStyleSpec(fontSize: 12)),
+                        new charts.TickSpec(8000, label: '8000  Hz', style: charts.TextStyleSpec(fontSize: 12)),
                       ],
                     )),
                 primaryMeasureAxis: new charts.NumericAxisSpec(
@@ -83,59 +89,47 @@ class NumericComboLinePointChart extends StatelessWidget {
   }
 
   /// Create one series with sample hard coded data.
-  static List<charts.Series<LinearSales, int>> _createSampleData() {
-    final desktopSalesData = [
-      new LinearSales(250, 10),
-      new LinearSales(500, 7),
-      new LinearSales(1000, 10),
-      new LinearSales(2000, 35),
-      new LinearSales(4000, 70),
-      new LinearSales(8000, 75)
-    ];
+  static List<charts.Series<DataPoint, int>> _createSampleData() {
+    Audiogram audiogram = new Audiogram();
 
-    final tableSalesData = [
-      new LinearSales(250, 8),
-      new LinearSales(500, 10),
-      new LinearSales(1000, 10),
-      new LinearSales(2000, 40),
-      new LinearSales(4000, 78),
-      new LinearSales(8000, 70)
-    ];
+    List<DataPoint> leftEarData = audiogram.getLeftEarDataPoints();
+    List<DataPoint> rightEarData = audiogram.getRightEarDataPoints();
+
 
     return [
-      new charts.Series<LinearSales, int>(
-        id: 'Desktop',
+      new charts.Series<DataPoint, int>(
+        id: 'LeftEar',
         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (LinearSales sales, _) => sales.year,
-        measureFn: (LinearSales sales, _) => sales.sales,
-        data: desktopSalesData,
+        domainFn: (DataPoint dataPoint, _) => dataPoint.frequency,
+        measureFn: (DataPoint dataPoint, _) => dataPoint.decibel,
+        data: leftEarData,
       ),
-      new charts.Series<LinearSales, int>(
-        id: 'Tablet',
+
+      new charts.Series<DataPoint, int>(
+        id: 'RightEar',
         colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
-        domainFn: (LinearSales sales, _) => sales.year,
-        measureFn: (LinearSales sales, _) => sales.sales,
-
-        data: tableSalesData,
+        domainFn: (DataPoint dataPoint, _) => dataPoint.frequency,
+        measureFn: (DataPoint dataPoint, _) => dataPoint.decibel,
+        data: rightEarData,
       ),
-      new charts.Series<LinearSales, int>(
-          id: 'Mobile',
+      // The Dots for the right ear chart
+      new charts.Series<DataPoint, int>(
+          id: 'RightEarDots',
           colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
-          domainFn: (LinearSales sales, _) => sales.year,
-          measureFn: (LinearSales sales, _) => sales.sales,
-          displayName: 'tdawdwadas',
+          domainFn: (DataPoint dataPoints, _) => dataPoints.frequency,
+          measureFn: (DataPoint dataPoints, _) => dataPoints.decibel,
+          data: rightEarData)
+      // Configure our custom point renderer for this series.
+        ..setAttribute(charts.rendererIdKey, 'customPoint'),
 
-          data: tableSalesData)
-      // Configure our custom point renderer for this series.
-        ..setAttribute(charts.rendererIdKey, 'customPoint'),
-      new charts.Series<LinearSales, int>(
-          id: 'Mobile',
+      // The Dots for the left ear chart
+      new charts.Series<DataPoint, int>(
+          id: 'LeftEarDots',
           colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-          domainFn: (LinearSales sales, _) => sales.year,
-          measureFn: (LinearSales sales, _) => sales.sales,
-          data: desktopSalesData)
-      // Configure our custom point renderer for this series.
-        ..setAttribute(charts.rendererIdKey, 'customPoint'),
+          domainFn: (DataPoint dataPoints, _) => dataPoints.frequency,
+          measureFn: (DataPoint dataPoints, _) => dataPoints.decibel,
+          data: leftEarData)..setAttribute(charts.rendererIdKey, 'customPoint'),
+
     ];
   }
 }
@@ -146,11 +140,4 @@ class LinearSales {
   final int sales;
 
   LinearSales(this.year, this.sales);
-}
-
-class TestAudiogram {
-  int decibel;
-  int frequency;
-
-  TestAudiogram(this.decibel, this.frequency);
 }
