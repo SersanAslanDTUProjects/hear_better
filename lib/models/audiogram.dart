@@ -5,14 +5,18 @@ class Audiogram {
   var _frequencies = new List();
   var _rightEar = new List();
   var _leftEar = new List();
+  List<DataPoint> idealHearing = new List();
 
-  Audiogram(){
+  Audiogram() {
     _frequencies = [250, 1000, 2000, 4000, 6000, 8000];
     // Currently always creates dummy data
     makeDummyData();
+    for (int i = 0; i < _frequencies.length; i++) {
+      idealHearing.add(new DataPoint(_frequencies[i], 20));
+    }
   }
 
-  void makeDummyData(){
+  void makeDummyData() {
     Random random = new Random();
     int maxStartValue = 25;
     int leftStartValue = random.nextInt(25);
@@ -20,7 +24,7 @@ class Audiogram {
     _rightEar.add(rightStartValue);
     _leftEar.add(leftStartValue);
 
-    for (int i = 1 ; i < _frequencies.length ; i++){
+    for (int i = 1; i < _frequencies.length; i++) {
       if (i < 4) {
         rightStartValue += random.nextInt(10);
         _rightEar.add(rightStartValue);
@@ -35,42 +39,30 @@ class Audiogram {
     }
   }
 
-  void addDataPoint(){
+  void addDataPoint() {
     // TODO add data point to audiogram
   }
 
-  get frequencies => _frequencies;
 
-  set frequencies(value) {
-    _frequencies = value;
-  }
-
-  List<DataPoint> getLeftEarDataPoints(){
+  List<DataPoint> getLeftEarDataPoints() {
     List<DataPoint> datapoints = List();
-    for (int i = 0 ; i < _frequencies.length ; i++){
+    for (int i = 0; i < _frequencies.length; i++) {
       datapoints.add(DataPoint(_frequencies[i], _leftEar[i]));
     }
     return datapoints;
   }
-  List<DataPoint> getRightEarDataPoints(){
+
+  List<DataPoint> getRightEarDataPoints() {
     List<DataPoint> datapoints = List();
-    for (int i = 0 ; i < _frequencies.length ; i++){
+    for (int i = 0; i < _frequencies.length; i++) {
       datapoints.add(DataPoint(_frequencies[i], _rightEar[i]));
     }
     return datapoints;
   }
-
-  get rightEar => _rightEar;
-
-  set rightEar(value) {
-    _rightEar = value;
+  List<DataPoint> getIdealHearing() {
+    return idealHearing;
   }
 
-  get leftEar => _leftEar;
-
-  set leftEar(value) {
-    _leftEar = value;
-  }
 }
 
 class DataPoint {

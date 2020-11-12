@@ -112,6 +112,13 @@ class NumericComboLinePointChart extends StatelessWidget {
         measureFn: (DataPoint dataPoint, _) => dataPoint.decibel,
         data: rightEarData,
       ),
+      new charts.Series<DataPoint, int>(
+        id: 'IdealHearing',
+        colorFn: (_, __) => charts.MaterialPalette.yellow.shadeDefault,
+        domainFn: (DataPoint dataPoint, _) => dataPoint.frequency,
+        measureFn: (DataPoint dataPoint, _) => dataPoint.decibel,
+        data: audiogram.idealHearing,
+      ),
       // The Dots for the right ear chart
       new charts.Series<DataPoint, int>(
           id: 'RightEarDots',
