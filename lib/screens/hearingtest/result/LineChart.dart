@@ -94,8 +94,7 @@ class NumericComboLinePointChart extends StatelessWidget {
 
     List<DataPoint> leftEarData = audiogram.getLeftEarDataPoints();
     List<DataPoint> rightEarData = audiogram.getRightEarDataPoints();
-
-
+    
     return [
       new charts.Series<DataPoint, int>(
         id: 'LeftEar',
@@ -112,6 +111,7 @@ class NumericComboLinePointChart extends StatelessWidget {
         measureFn: (DataPoint dataPoint, _) => dataPoint.decibel,
         data: rightEarData,
       ),
+
       new charts.Series<DataPoint, int>(
         id: 'IdealHearing',
         colorFn: (_, __) => charts.MaterialPalette.yellow.shadeDefault,
@@ -119,15 +119,14 @@ class NumericComboLinePointChart extends StatelessWidget {
         measureFn: (DataPoint dataPoint, _) => dataPoint.decibel,
         data: audiogram.idealHearing,
       ),
+
       // The Dots for the right ear chart
       new charts.Series<DataPoint, int>(
           id: 'RightEarDots',
           colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
           domainFn: (DataPoint dataPoints, _) => dataPoints.frequency,
           measureFn: (DataPoint dataPoints, _) => dataPoints.decibel,
-          data: rightEarData)
-      // Configure our custom point renderer for this series.
-        ..setAttribute(charts.rendererIdKey, 'customPoint'),
+          data: rightEarData)..setAttribute(charts.rendererIdKey, 'customPoint'),
 
       // The Dots for the left ear chart
       new charts.Series<DataPoint, int>(
@@ -141,10 +140,3 @@ class NumericComboLinePointChart extends StatelessWidget {
   }
 }
 
-/// Sample linear data type.
-class LinearSales {
-  final int year;
-  final int sales;
-
-  LinearSales(this.year, this.sales);
-}
