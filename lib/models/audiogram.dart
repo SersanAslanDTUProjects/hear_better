@@ -3,8 +3,8 @@ import 'dart:math';
 class Audiogram {
 
   var _frequencies = new List();
-  var _rightEar = new List();
-  var _leftEar = new List();
+  var rightEar = new List();
+  var leftEar = new List();
   List<DataPoint> idealHearing = new List();
 
   Audiogram() {
@@ -21,20 +21,20 @@ class Audiogram {
     int maxStartValue = 25;
     int leftStartValue = random.nextInt(25);
     int rightStartValue = random.nextInt(25);
-    _rightEar.add(rightStartValue);
-    _leftEar.add(leftStartValue);
+    rightEar.add(rightStartValue);
+    leftEar.add(leftStartValue);
 
     for (int i = 1; i < _frequencies.length; i++) {
       if (i < 4) {
         rightStartValue += random.nextInt(10);
-        _rightEar.add(rightStartValue);
+        rightEar.add(rightStartValue);
         leftStartValue += random.nextInt(10);
-        _leftEar.add(leftStartValue);
+        leftEar.add(leftStartValue);
       } else {
         rightStartValue += random.nextInt(20);
-        _rightEar.add(rightStartValue);
+        rightEar.add(rightStartValue);
         leftStartValue += random.nextInt(20);
-        _leftEar.add(leftStartValue);
+        leftEar.add(leftStartValue);
       }
     }
   }
@@ -47,7 +47,7 @@ class Audiogram {
   List<DataPoint> getLeftEarDataPoints() {
     List<DataPoint> datapoints = List();
     for (int i = 0; i < _frequencies.length; i++) {
-      datapoints.add(DataPoint(_frequencies[i], _leftEar[i]));
+      datapoints.add(DataPoint(_frequencies[i], leftEar[i]));
     }
     return datapoints;
   }
@@ -55,7 +55,7 @@ class Audiogram {
   List<DataPoint> getRightEarDataPoints() {
     List<DataPoint> datapoints = List();
     for (int i = 0; i < _frequencies.length; i++) {
-      datapoints.add(DataPoint(_frequencies[i], _rightEar[i]));
+      datapoints.add(DataPoint(_frequencies[i], rightEar[i]));
     }
     return datapoints;
   }
