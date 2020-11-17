@@ -1,31 +1,49 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hear_better/models/test_result.dart';
+import 'package:hear_better/models/audiogram.dart';
 import 'package:hear_better/theme/colors.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+
+double userTestResult = 0;
+double idealHearing = 0.5;
+double lowHearing = 0.1666;
+String resultsOfHearing = "----";
+Color color = Colors.grey;
+Audiogram audiogram = new Audiogram();
+
+void calculateUserScore(List leftEar, List rightEar) {
+  int goodHearing = 0;
+  for (int i = 0; i < leftEar.length; i++) {
+    print(leftEar[i]);
+    print(rightEar[i]);
+    if (leftEar[i] <= 20) {
+      goodHearing++;
+    }
+    if (rightEar[i] <= 20) {
+      goodHearing++;
+    }
+  }
+  userTestResult = goodHearing / 12;
+  print(userTestResult);
+}
 
 class Results extends StatefulWidget {
   @override
   _ResultsState createState() => _ResultsState();
 }
-double userTestResult = 60 / 100; //get from test_result
-double normalHearing = 0.5; //what is the interval for a normal hearing
-double lowHearing = 0.3;
-double goodHearing = 1;
-String resultsOfHearing = "----";
-Color color = Colors.grey;
+
 class _ResultsState extends State<Results> {
   String displayTextOfResult(double userTestResult) {
     setState(() {
+      calculateUserScore(audiogram.leftEar, audiogram.rightEar);
       if (userTestResult <= lowHearing) {
         resultsOfHearing =
             "Your hearing needs medical attention. Please seek doctor";
         color = AppColors().primaryRed;
-      } else if (userTestResult >= lowHearing &&
-          userTestResult <= normalHearing) {
+      } else if (userTestResult == idealHearing) {
         resultsOfHearing = "Your hearing is normal";
         color = AppColors().primaryYellow;
-      } else if (userTestResult >= normalHearing) {
+      } else if (userTestResult >= idealHearing) {
         resultsOfHearing = "Very good hearing! Keep up!";
         color = AppColors().primaryGreen;
       }
@@ -81,3 +99,5 @@ class _ResultsState extends State<Results> {
     );
   }
 }
+
+
