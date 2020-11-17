@@ -32,7 +32,6 @@ class _AuthenticationScreenMobileLoginState
         : GestureDetector(
             onTap: () {
               FocusScopeNode currentFocus = FocusScope.of(context);
-
               if (!currentFocus.hasPrimaryFocus) {
                 currentFocus.unfocus();
               }

@@ -22,31 +22,62 @@ class ResultScreenMobile extends StatelessWidget {
         body: ListView(
           children: <Widget>[
             Container(
-                margin: EdgeInsets.fromLTRB(0, 50, 0, 0) ,
-                child: Center(
-                    child: Container(
-                      width: 300,
-                      height: 200,
-                      child: Results(),
-                    )
-                )
+              margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
+              child: Center(
+                child: Container(
+                  width: 300,
+                  height: 200,
+                  child: Results(),
+                ),
+              ),
             ),
             Container(
-              padding: EdgeInsets.all(30),
+              padding: EdgeInsets.fromLTRB(30, 30, 30, 10),
               width: 200,
               height: 400,
               child: NumericComboLinePointChart.withSampleData(),
             ),
             Container(
-              child: Image(
-                image: AssetImage('assets/images/result-screen/Full-Green.png'),
+              child: ListTile(
+                title: Row(
+                  children: [
+                    Expanded(
+                      child: RaisedButton(
+                        color: AppTheme.colors.primaryBlue,
+                        onPressed: () {},
+                        child: Text(
+                          'Close',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: AppTheme.colors.white,
+                          ),
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: RaisedButton(
+                        color: AppTheme.colors.primaryGreen,
+                        onPressed: () {},
+                        child: Text(
+                          'Save Result',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: AppTheme.colors.white,
+                          ),
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-            Container(
-              child: Image(
-                image: AssetImage('assets/images/result-screen/Full-Blue.png'),
-              ),
-            )
           ],
         ),
       ),

@@ -35,7 +35,7 @@ class Results extends StatefulWidget {
 class _ResultsState extends State<Results> {
   String displayTextOfResult(double userTestResult) {
     setState(() {
-      calculateUserScore(audiogram.leftEar, audiogram.rightEar);
+      calculateUserScore(audiogram.rightEar, audiogram.leftEar);
       if (userTestResult <= lowHearing) {
         resultsOfHearing =
             "Your hearing needs medical attention. Please seek doctor";
@@ -99,5 +99,3 @@ class _ResultsState extends State<Results> {
     );
   }
 }
-
-
