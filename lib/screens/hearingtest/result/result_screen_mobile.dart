@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hear_better/models/audiogram.dart';
 import 'package:hear_better/screens/hearingtest/result/comparing_results.dart';
 import 'package:hear_better/theme/app_theme.dart';
 
 import 'LineChart.dart';
 
 class ResultScreenMobile extends StatelessWidget {
+  Audiogram audiogram = new Audiogram();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +29,7 @@ class ResultScreenMobile extends StatelessWidget {
                 child: Container(
                   width: 300,
                   height: 200,
-                  child: Results(),
+                  child: Results(audiogram),
                 ),
               ),
             ),
@@ -35,7 +37,7 @@ class ResultScreenMobile extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(30, 30, 30, 10),
               width: 200,
               height: 400,
-              child: NumericComboLinePointChart.withSampleData(),
+              child: NumericComboLinePointChart.withSampleData(audiogram),
             ),
             Container(
               child: ListTile(

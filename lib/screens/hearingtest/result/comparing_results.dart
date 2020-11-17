@@ -9,7 +9,7 @@ double idealHearing = 0.5;
 double lowHearing = 0.1666;
 String resultsOfHearing = "----";
 Color color = Colors.grey;
-Audiogram audiogram = new Audiogram();
+Audiogram audiogram;
 
 void calculateUserScore(List leftEar, List rightEar) {
   int goodHearing = 0;
@@ -28,6 +28,10 @@ void calculateUserScore(List leftEar, List rightEar) {
 }
 
 class Results extends StatefulWidget {
+  Results(Audiogram audiogram2) {
+    audiogram = audiogram2;
+  }
+
   @override
   _ResultsState createState() => _ResultsState();
 }

@@ -5,13 +5,11 @@ import 'package:hear_better/models/audiogram.dart';
 import 'package:hear_better/screens/hearingtest/result/LineChart.dart';
 import '../hearingtest/result/comparing_results.dart';
 
-
 class ResultScreen extends StatelessWidget {
   final List<charts.Series> seriesList = createData();
   final bool animate = true;
 
   final testGraf = new Audiogram();
-
 
   static List<charts.Series<TestAudiogram, String>> createData() {
     final random = Random();
@@ -24,12 +22,15 @@ class ResultScreen extends StatelessWidget {
       TestAudiogram(80, random.nextInt(8000)),
     ];
 
-    return [charts.Series<TestAudiogram, String>(
-      id: 'Audiogram',
-      domainFn: (TestAudiogram testAudiogram, _) => testAudiogram.frequency.toString(),
-      measureFn: (TestAudiogram testAudiogram, _ ) => testAudiogram.decibel,
-      data: audiogramData,
-    )];
+    return [
+      charts.Series<TestAudiogram, String>(
+        id: 'Audiogram',
+        domainFn: (TestAudiogram testAudiogram, _) =>
+            testAudiogram.frequency.toString(),
+        measureFn: (TestAudiogram testAudiogram, _) => testAudiogram.decibel,
+        data: audiogramData,
+      )
+    ];
   }
 
   barChart() {
@@ -39,29 +40,27 @@ class ResultScreen extends StatelessWidget {
       vertical: true,
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
         children: <Widget>[
           Container(
-              margin: EdgeInsets.fromLTRB(0, 50, 0, 0) ,
+              margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
               child: Center(
                   child: Container(
-                    width: 200,
-                    height: 200,
-                    child: Results(),
-                  )
-              )
-          ),
+                width: 200,
+                height: 200,
+                child: Results(audiogram),
+              ))),
           Container(
             width: 250,
             height: 250,
-            child: NumericComboLinePointChart.withSampleData(),
+            child: NumericComboLinePointChart.withSampleData(audiogram),
           ),
           Container(
-            child:
-            Image(
+            child: Image(
               image: AssetImage('assets/images/result-screen/Full-Green.png'),
             ),
           ),
