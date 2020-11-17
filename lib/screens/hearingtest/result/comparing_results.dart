@@ -5,8 +5,8 @@ import 'package:hear_better/theme/colors.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 double userTestResult = 0;
-double idealHearing = 0.5;
-double lowHearing = 0.1666;
+double upperBoundForIdealHearing = 0.60;
+double lowHearing = 0.25;
 String resultsOfHearing = "----";
 Color color = Colors.grey;
 Audiogram audiogram;
@@ -24,6 +24,9 @@ void calculateUserScore(List leftEar, List rightEar) {
     }
   }
   userTestResult = goodHearing / 12;
+  if (userTestResult == 0.0) {
+    userTestResult = 0.05;
+  }
   print(userTestResult);
 }
 
@@ -31,7 +34,6 @@ class Results extends StatefulWidget {
   Results(Audiogram audiogram2) {
     audiogram = audiogram2;
   }
-
   @override
   _ResultsState createState() => _ResultsState();
 }
@@ -39,17 +41,20 @@ class Results extends StatefulWidget {
 class _ResultsState extends State<Results> {
   String displayTextOfResult(double userTestResult) {
     setState(() {
-      calculateUserScore(audiogram.rightEar, audiogram.leftEar);
       if (userTestResult <= lowHearing) {
         resultsOfHearing =
             "Your hearing needs medical attention. Please seek doctor";
         color = AppColors().primaryRed;
-      } else if (userTestResult == idealHearing) {
+      } else if (userTestResult > lowHearing &&
+          userTestResult < upperBoundForIdealHearing) {
         resultsOfHearing = "Your hearing is normal";
         color = AppColors().primaryYellow;
-      } else if (userTestResult >= idealHearing) {
+      } else if (userTestResult >= upperBoundForIdealHearing) {
         resultsOfHearing = "Very good hearing! Keep up!";
         color = AppColors().primaryGreen;
+      } else if (userTestResult < lowHearing) {
+        resultsOfHearing = "Seek doctor immediatly!";
+        color = AppColors().primaryRed;
       }
     });
     return resultsOfHearing;
@@ -57,6 +62,7 @@ class _ResultsState extends State<Results> {
 
   @override
   Widget build(BuildContext context) {
+    calculateUserScore(audiogram.rightEar, audiogram.leftEar);
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Center(
