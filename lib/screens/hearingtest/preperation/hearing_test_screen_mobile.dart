@@ -13,68 +13,93 @@ class HearingTestMobileScreen extends StatelessWidget {
     double _screenWidth = MediaQuery.of(context).size.width;
     double _screenHeight = MediaQuery.of(context).size.height;
 
+    Future<bool> onWillPop() async {
+      return (await showDialog(
+            context: context,
+            builder: (context) => new AlertDialog(
+              title: new Text('Stop the test?'),
+              content: new Text('Sure?'),
+              actions: <Widget>[
+                new FlatButton(
+                  onPressed: () => Router.navigator.pop(false),
+                  child: new Text('No'),
+                ),
+                new FlatButton(
+                  onPressed: () => Navigator.of(context)
+                      .popUntil(ModalRoute.withName(Router.wrapper)),
+                  child: new Text('Yes'),
+                ),
+              ],
+            ),
+          )) ??
+          false;
+    }
+
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          margin: EdgeInsets.only(top: 10),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.close),
-                    color: AppTheme.colors.primaryBlue,
-                  ),
-                ],
-              ),
-              Center(
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(50, 40, 50, 50),
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(height: 20),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.center,
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 0.0, horizontal: 50.0),
-                                child: TestProgressIndicator(),
+        child: WillPopScope(
+          onWillPop: onWillPop,
+          child: Container(
+            margin: EdgeInsets.only(top: 10),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      onPressed: () => onWillPop(),
+                      icon: Icon(Icons.close),
+                      color: AppTheme.colors.primaryBlue,
+                    ),
+                  ],
+                ),
+                Center(
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(50, 40, 50, 50),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: 20),
+                        Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Expanded(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 0.0, horizontal: 50.0),
+                                  child: TestProgressIndicator(),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 150),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            FlatButton(
-                              onPressed: () => null,
-                              onLongPress: () {
-                                HapticFeedback.mediumImpact();
-                                // TODO add secondary feed back if vibration not enabled or inform user enable vibration when boarding the app
-                              },
-                              child: Icon(
-                                Icons.hearing,
-                                size: 150.0,
-                                color: AppTheme.colors.primaryBlue,
-                              ), // TODO animation or better icon
-                            ),
-                          ],
+                        SizedBox(height: 150),
+                        Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              FlatButton(
+                                onPressed: () => null,
+                                onLongPress: () {
+                                  HapticFeedback.mediumImpact();
+                                  // TODO add secondary feed back if vibration not enabled or inform user enable vibration when boarding the app
+                                },
+                                child: Icon(
+                                  Icons.hearing,
+                                  size: 150.0,
+                                  color: AppTheme.colors.primaryBlue,
+                                ), // TODO animation or better icon
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
