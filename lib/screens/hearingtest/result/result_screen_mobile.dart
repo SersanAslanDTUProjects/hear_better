@@ -107,28 +107,26 @@ class _ResultScreenMobileState extends State<ResultScreenMobile> {
                           ),
                         ),
                       ),
+                      SizedBox(width: 10),
                       Visibility(
                         visible: _isVisible,
-                        child: Row(
-                          children: [
-                            SizedBox(width: 10),
-                            Expanded(
-                              child: RaisedButton(
-                                color: AppTheme.colors.primaryGreen,
-                                onPressed: () {},
-                                child: Text(
-                                  'Save Result',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    color: AppTheme.colors.white,
-                                  ),
-                                ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(7),
+                        child: Container(
+                          child: Expanded(
+                            child: RaisedButton(
+                              color: AppTheme.colors.primaryGreen,
+                              onPressed: () {},
+                              child: Text(
+                                'Save Result',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: AppTheme.colors.white,
                                 ),
                               ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(7),
+                              ),
                             ),
-                          ],
+                          ),
                         ),
                       ),
                     ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart' hide Router;
+import 'package:flutter/services.dart';
 import 'package:hear_better/models/hbuser.dart';
 import 'package:hear_better/services/auth.dart';
 import 'package:hear_better/theme/routes/router.gr.dart';
@@ -16,6 +17,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return StreamProvider<HBUser>.value(
       value: AuthService().user,
       child: MaterialApp(
