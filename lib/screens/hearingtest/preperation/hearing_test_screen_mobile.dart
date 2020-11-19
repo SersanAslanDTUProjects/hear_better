@@ -123,8 +123,8 @@ class _TestProgressIndicatorState extends State<TestProgressIndicator> {
 
   // TODO make timer functionality external?
   void startTimer(BuildContext context) {
+    playLocal();
     new Timer(Duration(seconds: 1, milliseconds: 2), () {
-      playLocal();
       setState(() {
         if (progress == 1) {
           Router.navigator.pushNamed(Router.resultScreen);
