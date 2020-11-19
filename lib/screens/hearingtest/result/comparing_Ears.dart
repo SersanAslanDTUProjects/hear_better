@@ -14,7 +14,6 @@ void comparingEars(List rightEar, List leftEar) {
   for (int i = 0; i < rightEar.length; i++) {
     if (leftEar[i] < rightEar[i]) {
       leftEarCounter++;
-      print("leftearconuter" + leftEarCounter.toString());
     } else if (rightEar[i] < leftEar[i]) {
       rightEarCounter++;
     } else {
@@ -22,12 +21,9 @@ void comparingEars(List rightEar, List leftEar) {
       leftEarCounter++;
     }
   }
-  print(rightEarCounter);
-  print(leftEarCounter);
+
   rightEarProcent = rightEarCounter / rightEar.length;
-  print("rightEarprocent" + rightEarProcent.toString());
   leftEarProcent = leftEarCounter / leftEar.length;
-  print("left" + leftEarProcent.toString());
 
   if (rightEarProcent > leftEarProcent) {
     earResults = " You hear better with your right ear";
