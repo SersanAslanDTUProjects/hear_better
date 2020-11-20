@@ -1,41 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:hear_better/models/audiogram.dart';
+import 'package:hear_better/screens/hearingtest/result/comparing_results.dart';
 import 'package:hear_better/theme/colors.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 Audiogram audiogram1;
-double rightEarCounter = 0;
-double leftEarCounter = 0;
-double rightEarProcent = 0;
-double leftEarProcent = 0;
+double rightEarPercentage = 0;
+double leftEarPercentage = 0;
+String earMessage = "According to your test your hear better with your, ";
 String earResults = "----";
 
-void comparingEars(List rightEar, List leftEar) {
-  for (int i = 0; i < rightEar.length; i++) {
-    if (leftEar[i] < rightEar[i]) {
-      leftEarCounter++;
-    } else if (rightEar[i] < leftEar[i]) {
-      rightEarCounter++;
-    } else {
-      rightEarCounter++;
-      leftEarCounter++;
-    }
+class EarResults extends StatefulWidget {
+  @override
+  _EarResultsState createState() => _EarResultsState();
+  EarResults(Audiogram audiogram) {
+    audiogram1 = audiogram;
   }
-
-  rightEarProcent = rightEarCounter / rightEar.length;
-  leftEarProcent = leftEarCounter / leftEar.length;
-
-  if (rightEarProcent > leftEarProcent) {
-    earResults = " You hear better with your right ear";
-  } else if (leftEarProcent > rightEarProcent) {
-    earResults = " You hear better with your left ear";
-  } else
-    earResults = " Both your ears have the same hearing percentage";
 }
 
-class EarsResults extends StatelessWidget {
-  EarsResults(Audiogram audiogram) {
-    audiogram1 = audiogram;
+class _EarResultsState extends State<EarResults> {
+  void comparingEars(List rightEar, List leftEar) {
+    setState(() {
+      double rightEarCounter = 0;
+      double leftEarCounter = 0;
+      for (int i = 0; i < rightEar.length; i++) {
+        if (leftEar[i] < rightEar[i]) {
+          leftEarCounter++;
+        } else if (rightEar[i] < leftEar[i]) {
+          rightEarCounter++;
+        } else {
+          rightEarCounter++;
+          leftEarCounter++;
+        }
+      }
+      rightEarPercentage = rightEarCounter / rightEar.length;
+      print(rightEarPercentage);
+      leftEarPercentage = leftEarCounter / leftEar.length;
+      print(leftEarPercentage);
+      if (rightEarPercentage > leftEarPercentage) {
+        earResults = earMessage +
+            "right ear \n Which is " +
+            ((rightEarPercentage * 100).round()).toString() +
+            "% superior to your left ear";
+      } else if (leftEarPercentage > rightEarPercentage) {
+        earResults = earMessage + "left ear \n Which is"+
+            ((leftEarPercentage * 100).round()).toString() +
+            "% superior to your right ear";
+      } else
+        earResults = " Both your ears have the same hearing percentage";
+    });
   }
 
   @override
@@ -45,7 +58,7 @@ class EarsResults extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text(
-            "This is the results of how well you hear with each ear ",
+            "This is the results of which ear you hear better with according to your test ",
             style: TextStyle(fontSize: 24),
             textAlign: TextAlign.center,
           ),
@@ -64,7 +77,7 @@ class EarsResults extends StatelessWidget {
               ),
               progressColor: AppColors().primaryRed,
               linearStrokeCap: LinearStrokeCap.roundAll,
-              percent: rightEarProcent,
+              percent: rightEarPercentage,
             ),
           ),
           Container(
@@ -79,7 +92,7 @@ class EarsResults extends StatelessWidget {
               ),
               progressColor: AppColors().primaryBlue,
               linearStrokeCap: LinearStrokeCap.roundAll,
-              percent: leftEarProcent,
+              percent: leftEarPercentage,
             ),
           ),
           Text(
