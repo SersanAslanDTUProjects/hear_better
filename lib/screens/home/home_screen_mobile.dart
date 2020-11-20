@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' hide Router;
 import 'package:hear_better/models/audiogram.dart';
 import 'package:hear_better/models/hbuser.dart';
+import 'package:hear_better/screens/hearingtest/result/comparing_Ears.dart';
 import 'package:hear_better/services/auth.dart';
 import 'package:hear_better/services/database.dart';
 import 'package:hear_better/theme/app_theme.dart';
@@ -50,150 +51,158 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
         stream: DatabaseService(uid: user.uid).audiograms,
         builder: (context, snapshot) {
           List<Audiogram> audiogramsData = snapshot.data;
-          if (snapshot.hasData) {
-            return WillPopScope(
-              onWillPop: onWillPop,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppTheme.colors.white,
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/background.png"),
-                    fit: BoxFit.fitWidth,
-                    alignment: Alignment.bottomCenter,
-                  ),
+          /* if (audiogramsData.isNotEmpty) { */
+          return WillPopScope(
+            onWillPop: onWillPop,
+            child: Container(
+              decoration: BoxDecoration(
+                color: AppTheme.colors.white,
+                image: DecorationImage(
+                  image: AssetImage("assets/images/background.png"),
+                  fit: BoxFit.fitWidth,
+                  alignment: Alignment.bottomCenter,
                 ),
-                margin: EdgeInsets.all(0),
-                child: Scaffold(
-                  backgroundColor: Colors.transparent,
-                  body: SafeArea(
-                    child: Center(
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                        child: ListView(
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(left: 20, right: 20),
-                              child: SizedBox(
-                                height: 75,
-                                child: Row(
-                                  children: <Widget>[
-                                    Image.asset(
-                                        "assets/images/hearbetter_logo.png"),
-                                    Spacer(),
-                                    RawMaterialButton(
-                                      onPressed: () => Router.navigator
-                                          .pushNamed(Router.profileScreen),
-                                      elevation: 2.0,
-                                      fillColor: Colors.red,
-                                      child: Icon(
-                                        Icons.person,
-                                        size: 35.0,
-                                      ),
-                                      padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(
+              ),
+              margin: EdgeInsets.all(0),
+              child: Scaffold(
+                backgroundColor: Colors.transparent,
+                body: SafeArea(
+                  child: Center(
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                      child: ListView(
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: SizedBox(
                               height: 75,
-                            ),
-                            Container(
-                              margin:
-                                  EdgeInsets.only(top: 0, left: 50, right: 50),
-                              child: SizedBox(
-                                height: 60,
-                                width: _screenWidth,
-                                child: RaisedButton(
-                                  color: AppTheme.colors.primaryGreen,
-                                  onPressed: () => Router.navigator.pushNamed(
-                                      Router.hearingTestPreperationScreen),
-                                  child: Text(
-                                    'Test your hearing',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      color: AppTheme.colors.white,
+                              child: Row(
+                                children: <Widget>[
+                                  Image.asset(
+                                      "assets/images/hearbetter_logo.png"),
+                                  Spacer(),
+                                  RawMaterialButton(
+                                    onPressed: () => Router.navigator
+                                        .pushNamed(Router.profileScreen),
+                                    elevation: 2.0,
+                                    fillColor: Colors.red,
+                                    child: Icon(
+                                      Icons.person,
+                                      size: 35.0,
                                     ),
+                                    padding: EdgeInsets.all(15.0),
+                                    shape: CircleBorder(),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 75,
+                          ),
+                          Container(
+                            margin:
+                                EdgeInsets.only(top: 0, left: 50, right: 50),
+                            child: SizedBox(
+                              height: 60,
+                              width: _screenWidth,
+                              child: RaisedButton(
+                                color: AppTheme.colors.primaryGreen,
+                                onPressed: () => Router.navigator.pushNamed(
+                                    Router.hearingTestPreperationScreen),
+                                child: Text(
+                                  'Test your hearing',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: AppTheme.colors.white,
                                   ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(7),
-                                  ),
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(7),
                                 ),
                               ),
                             ),
-                            SizedBox(height: 75),
-                            SizedBox(
-                              width: _screenWidth,
-                              child: Container(
-                                color: AppTheme.colors.primaryBlue
-                                    .withOpacity(0.8),
-                                margin: EdgeInsets.only(left: 30, right: 30),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    Container(
-                                      margin: EdgeInsets.only(top: 30),
-                                      child: Text(
-                                        "My Hearing",
-                                        style: TextStyle(
-                                          color: AppTheme.colors.white,
-                                          fontSize: 24,
-                                        ),
+                          ),
+                          SizedBox(height: 75),
+                          SizedBox(
+                            width: _screenWidth,
+                            child: Container(
+                              color:
+                                  AppTheme.colors.primaryBlue.withOpacity(0.8),
+                              margin: EdgeInsets.only(left: 30, right: 30),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.only(top: 30),
+                                    child: Text(
+                                      "My Hearing Tests",
+                                      style: TextStyle(
+                                        color: AppTheme.colors.white,
+                                        fontSize: 24,
                                       ),
                                     ),
-                                    SizedBox(height: 50),
-                                    Container(
+                                  ),
+                                  SizedBox(height: 25),
+                                  Container(
+                                    margin: EdgeInsets.only(bottom: 30),
+                                    child: SizedBox(
+                                      height: audiogramsData != null
+                                          ? (audiogramsData.isNotEmpty
+                                              ? (audiogramsData.length <= 5
+                                                  ? audiogramsData.length * 80.0
+                                                  : 400.0)
+                                              : 100.0)
+                                          : 100.0,
                                       width: _screenWidth,
-                                      height: _screenHeight,
-                                      child: AudiogramList(
-                                          audiograms: audiogramsData),
-                                    )
+                                      child: AudiogramList(snapshot: snapshot),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 80),
+                          SizedBox(
+                            width: _screenWidth,
+                            child: Container(
+                              color:
+                                  AppTheme.colors.primaryBlue.withOpacity(0.8),
+                              margin: EdgeInsets.only(left: 30, right: 30),
+                              child: Container(
+                                margin: EdgeInsets.all(30),
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      "Scheduled Tests",
+                                      style: TextStyle(
+                                        color: AppTheme.colors.white,
+                                        fontSize: 24,
+                                      ),
+                                    ),
+                                    SizedBox(height: 20),
+                                    Container(
+                                      child: SfCalendar(
+                                        view: CalendarView.month,
+                                        firstDayOfWeek: 1,
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
-                            SizedBox(height: 80),
-                            SizedBox(
-                              width: _screenWidth,
-                              child: Container(
-                                color: AppTheme.colors.primaryBlue
-                                    .withOpacity(0.8),
-                                margin: EdgeInsets.only(left: 30, right: 30),
-                                child: Container(
-                                  margin: EdgeInsets.all(30),
-                                  child: Column(
-                                    children: <Widget>[
-                                      Text(
-                                        "Noise Recordings",
-                                        style: TextStyle(
-                                          color: AppTheme.colors.white,
-                                          fontSize: 24,
-                                        ),
-                                      ),
-                                      SizedBox(height: 20),
-                                      Container(
-                                        child: SfCalendar(
-                                          view: CalendarView.month,
-                                          firstDayOfWeek: 1,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
               ),
-            );
-          } else {
+            ),
+          );
+          /* } else {
             return Loading();
-          }
+          } */
         });
   }
 }

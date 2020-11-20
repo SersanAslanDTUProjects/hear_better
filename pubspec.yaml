@@ -39,6 +39,7 @@ dependencies:
   syncfusion_flutter_calendar: ^18.3.47
   flutter_spinkit: "^4.1.2"
   intl: ^0.16.1
+  auto_size_text: ^2.1.0
 
 dev_dependencies:
   flutter_test:

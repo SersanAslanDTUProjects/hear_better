@@ -19,7 +19,7 @@ class Audiogram {
     for (int i = 0; i < _frequencies.length; i++) {
       idealHearing.add(new DataPoint(_frequencies[i], 20));
     }
-    audioUUID = format.add_yMMMd().add_Hm().format(date);
+    audioUUID = format.add_yMMMd().add_Hms().format(date);
   }
 
   void makeDummyData() {
