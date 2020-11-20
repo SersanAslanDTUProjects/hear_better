@@ -22,18 +22,23 @@ class _AudiogramListState extends State<AudiogramList> {
   Widget build(BuildContext context) {
     Stream<List<Audiogram>> stream = DatabaseService(uid: user.uid).audiograms;
     List<Audiogram> audiograms = new List();
-   /**
-    stream.forEach((elements) {
+
+    stream.forEach((elements) async {
       for (var audiogram in elements) {
-        audiograms.add(audiogram);
+        await audiograms.add(audiogram);
         print(audiogram.audioUUID);
         print(audiogram.rightEar);
         print(audiogram.leftEar);
+        print("Stream lenght");
+        print(stream.length);
         print("-----------------------");
       }
+      print("Audiogram lenght");
+      print(audiograms.length);
+      print(audiograms[3].audioUUID);
     });
-       **/
     final List<String> entries = <String>['A', 'B', 'C'];
+
     final List<int> colorCodes = <int>[600, 500, 100];
 
     return ListView.builder(
@@ -43,7 +48,7 @@ class _AudiogramListState extends State<AudiogramList> {
           return Container(
             height: 50,
             color: Colors.amber[colorCodes[index]],
-            child: Center(child: Text('Entry ${entries[index]}')),
+            child: Center(child: Text(audiograms.length.toString())),
           );
         }
     );

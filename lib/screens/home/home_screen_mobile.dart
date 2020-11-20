@@ -134,6 +134,7 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                               ),
                               Container(
                                 width: _screenWidth,
+                                height: 200,
                                 child: AudiogramList(user: user)
                               )
                             ],
