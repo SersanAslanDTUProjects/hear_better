@@ -1,10 +1,15 @@
 import 'dart:math';
 
-class Audiogram {
+import 'package:intl/intl.dart';
 
+class Audiogram {
   var _frequencies = new List();
   var rightEar = new List();
   var leftEar = new List();
+  DateTime date = new DateTime.now();
+  DateFormat format = new DateFormat();
+  String audioUUID;
+
   List<DataPoint> idealHearing = new List();
 
   Audiogram() {
@@ -14,6 +19,7 @@ class Audiogram {
     for (int i = 0; i < _frequencies.length; i++) {
       idealHearing.add(new DataPoint(_frequencies[i], 20));
     }
+    audioUUID = format.add_yMMMd().add_Hm().format(date);
   }
 
   void makeDummyData() {
@@ -43,7 +49,6 @@ class Audiogram {
     // TODO add data point to audiogram
   }
 
-
   List<DataPoint> getLeftEarDataPoints() {
     List<DataPoint> datapoints = List();
     for (int i = 0; i < _frequencies.length; i++) {
@@ -59,10 +64,10 @@ class Audiogram {
     }
     return datapoints;
   }
+
   List<DataPoint> getIdealHearing() {
     return idealHearing;
   }
-
 }
 
 class DataPoint {

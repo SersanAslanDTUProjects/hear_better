@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:hear_better/models/audiogram.dart';
 import 'package:hear_better/models/hbuser.dart';
 import 'package:hear_better/services/database.dart';
 

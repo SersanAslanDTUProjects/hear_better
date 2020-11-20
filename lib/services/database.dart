@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hear_better/models/audiogram.dart';
 import 'package:hear_better/models/hbuser.dart';
 
 class DatabaseService {
@@ -25,6 +26,22 @@ class DatabaseService {
       'dateOfBirth': dateOfBirth,
     });
   }
+
+  Future addAudiogramData({Audiogram audiogram}) async {
+    return await userCollection
+        .doc(uid)
+        .collection("audiograms")
+        .doc(audiogram.audioUUID)
+        .set({
+      'audioUUID': audiogram.audioUUID,
+      'leftEar': audiogram.leftEar,
+      'rightEar': audiogram.rightEar
+    });
+  }
+
+  /* List<Audiogram> getAudiogramsData(){
+    return Audiogram()
+  } */
 
   HBUser _hbUserFromSnapShot(DocumentSnapshot snapshot) {
     return HBUser(

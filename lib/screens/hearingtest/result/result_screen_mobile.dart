@@ -3,6 +3,7 @@ import 'package:hear_better/models/audiogram.dart';
 import 'package:hear_better/models/hbuser.dart';
 import 'package:hear_better/screens/hearingtest/result/comparing_Ears.dart';
 import 'package:hear_better/screens/hearingtest/result/comparing_results.dart';
+import 'package:hear_better/services/database.dart';
 import 'package:hear_better/theme/app_theme.dart';
 import 'package:hear_better/theme/routes/router.gr.dart';
 import 'package:provider/provider.dart';
@@ -125,7 +126,19 @@ class _ResultScreenMobileState extends State<ResultScreenMobile> {
                           child: Expanded(
                             child: RaisedButton(
                               color: AppTheme.colors.primaryGreen,
-                              onPressed: () {},
+                              onPressed: () async {
+                                try {
+                                  await DatabaseService(uid: user.uid)
+                                      .addAudiogramData(audiogram: audiogram);
+                                } catch (e) {
+                                  print('need a toast to show error ');
+                                } finally {
+                                  print(
+                                      'show toast when succeed and disable save button');
+                                  //TODO: Fix hide/show button
+                                  showSaveButton(user);
+                                }
+                              },
                               child: Text(
                                 'Save Result',
                                 style: TextStyle(
