@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart' hide Router;
 import 'package:hear_better/models/audiogram.dart';
 import 'package:hear_better/models/hbuser.dart';
-import 'package:hear_better/screens/hearingtest/result/comparing_Ears.dart';
+import 'package:hear_better/screens/hearingtest/result/comparing_ears.dart';
 import 'package:hear_better/screens/hearingtest/result/comparing_results.dart';
 import 'package:hear_better/theme/app_theme.dart';
 import 'package:hear_better/theme/routes/router.gr.dart';
