@@ -39,9 +39,19 @@ class DatabaseService {
     });
   }
 
-  /* List<Audiogram> getAudiogramsData(){
-    return Audiogram()
-  } */
+  List<Audiogram> getAudiogramsData() {
+    List<Audiogram> audiograms = new List();
+    userCollection.doc(uid).collection("audiograms").get().then((value) => {
+          value.docs.forEach((doc) {
+            Audiogram audiogram = new Audiogram();
+            audiogram.audioUUID = doc['audioUUID'];
+            audiogram.leftEar = doc['leftEar'];
+            audiogram.rightEar = doc['rightEar'];
+            audiograms.add(audiogram);
+          })
+        });
+    return audiograms;
+  }
 
   HBUser _hbUserFromSnapShot(DocumentSnapshot snapshot) {
     return HBUser(
