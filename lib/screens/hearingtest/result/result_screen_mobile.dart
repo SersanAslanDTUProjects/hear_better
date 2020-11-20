@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' hide Router;
 import 'package:hear_better/models/audiogram.dart';
 import 'package:hear_better/models/hbuser.dart';
+import 'package:hear_better/screens/hearingtest/result/comparing_Ears.dart';
 import 'package:hear_better/screens/hearingtest/result/comparing_results.dart';
 import 'package:hear_better/theme/app_theme.dart';
 import 'package:hear_better/theme/routes/router.gr.dart';
@@ -83,6 +84,16 @@ class _ResultScreenMobileState extends State<ResultScreenMobile> {
                 width: 200,
                 height: 400,
                 child: NumericComboLinePointChart.withSampleData(audiogram),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
+                child: Center(
+                  child: Container(
+                    width: 300,
+                    height: 250,
+                    child: EarsResults(audiogram),
+                  ),
+                ),
               ),
               Container(
                 child: ListTile(
