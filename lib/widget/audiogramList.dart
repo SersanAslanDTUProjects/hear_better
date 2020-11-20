@@ -9,22 +9,43 @@ class AudiogramList extends StatefulWidget {
   AudiogramList({this.user});
 
   @override
-  _AudiogramListState createState() => _AudiogramListState();
+  _AudiogramListState createState() => _AudiogramListState(user);
 }
 
 class _AudiogramListState extends State<AudiogramList> {
+  HBUser user;
+  _AudiogramListState(HBUser user){
+    this.user = user;
+  }
+
   @override
   Widget build(BuildContext context) {
-    /* Stream<List<Audiogram>> stream = DatabaseService(uid: user.uid).audiograms;
-
-    stream.forEach((audiograms) {
-      for (var audiogram in audiograms) {
+    Stream<List<Audiogram>> stream = DatabaseService(uid: user.uid).audiograms;
+    List<Audiogram> audiograms = new List();
+   /**
+    stream.forEach((elements) {
+      for (var audiogram in elements) {
+        audiograms.add(audiogram);
         print(audiogram.audioUUID);
         print(audiogram.rightEar);
         print(audiogram.leftEar);
         print("-----------------------");
       }
-    }); */
-    return Container();
+    });
+       **/
+    final List<String> entries = <String>['A', 'B', 'C'];
+    final List<int> colorCodes = <int>[600, 500, 100];
+
+    return ListView.builder(
+        padding: const EdgeInsets.all(8),
+        itemCount: entries.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            height: 50,
+            color: Colors.amber[colorCodes[index]],
+            child: Center(child: Text('Entry ${entries[index]}')),
+          );
+        }
+    );
   }
 }

@@ -132,7 +132,10 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                                   fontSize: 24,
                                 ),
                               ),
-                              AudiogramList(user: user),
+                              Container(
+                                width: _screenWidth,
+                                child: AudiogramList(user: user)
+                              )
                             ],
                           ),
                         ),
