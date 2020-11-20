@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart' hide Router;
+import 'package:hear_better/models/audiogram.dart';
 import 'package:hear_better/models/hbuser.dart';
 import 'package:hear_better/services/auth.dart';
 import 'package:hear_better/services/database.dart';
 import 'package:hear_better/theme/app_theme.dart';
 import 'package:hear_better/theme/routes/router.gr.dart';
+import 'package:hear_better/widget/audiogramList.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:hear_better/utils/ui_utils.dart';
@@ -42,11 +44,6 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
     double _screenWidth = MediaQuery.of(context).size.width;
     double _screenHeight = MediaQuery.of(context).size.height;
     final user = Provider.of<HBUser>(context);
-    var audiograms = DatabaseService(uid: user.uid).getAudiogramsData();
-
-    audiograms.forEach((element) {
-      print(element.audioUUID);
-    });
 
     return WillPopScope(
       onWillPop: onWillPop,
@@ -135,6 +132,7 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                                   fontSize: 24,
                                 ),
                               ),
+                              AudiogramList(user: user),
                             ],
                           ),
                         ),
