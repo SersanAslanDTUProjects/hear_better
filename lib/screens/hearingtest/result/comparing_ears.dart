@@ -7,7 +7,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 Audiogram audiogram1;
 double rightEarPercentage = 0;
 double leftEarPercentage = 0;
-String earMessage = "According to your test your hear better with your, ";
+String earMessage = "According to your test your hear better with your ";
 String earResults = "----";
 
 class EarResults extends StatefulWidget {
@@ -39,13 +39,13 @@ class _EarResultsState extends State<EarResults> {
       print(leftEarPercentage);
       if (rightEarPercentage > leftEarPercentage) {
         earResults = earMessage +
-            "right ear \n Which is " +
+            "right ear \n Which scored " +
             ((rightEarPercentage * 100).round()).toString() +
-            "% superior to your left ear";
+            "% compared to your left ear";
       } else if (leftEarPercentage > rightEarPercentage) {
-        earResults = earMessage + "left ear \n Which is"+
+        earResults = earMessage + "left ear \n Which scored "+
             ((leftEarPercentage * 100).round()).toString() +
-            "% superior to your right ear";
+            "% compared to your right ear";
       } else
         earResults = " Both your ears have the same hearing percentage";
     });
@@ -75,6 +75,10 @@ class _EarResultsState extends State<EarResults> {
                   style: TextStyle(fontSize: 18),
                 ),
               ),
+              trailing: Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text((rightEarPercentage*100).round().toString() + "% "),
+              ),
               progressColor: AppColors().primaryRed,
               linearStrokeCap: LinearStrokeCap.roundAll,
               percent: rightEarPercentage,
@@ -89,6 +93,10 @@ class _EarResultsState extends State<EarResults> {
               leading: Padding(
                 padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
                 child: Text("Left ear ", style: TextStyle(fontSize: 18)),
+              ),
+              trailing: Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text((leftEarPercentage*100).round().toString() + "% "),
               ),
               progressColor: AppColors().primaryBlue,
               linearStrokeCap: LinearStrokeCap.roundAll,
