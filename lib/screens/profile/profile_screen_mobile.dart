@@ -6,7 +6,6 @@ import 'package:hear_better/theme/routes/router.gr.dart';
 import 'package:hear_better/widget/loading.dart';
 import 'package:provider/provider.dart';
 import 'package:hear_better/services/database.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 class ProfileScreenMobile extends StatefulWidget {
   @override

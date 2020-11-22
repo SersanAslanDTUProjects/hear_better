@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hear_better/models/audiogram.dart';
-import 'package:hear_better/screens/hearingtest/result/comparing_results.dart';
 import 'package:hear_better/theme/colors.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -43,7 +42,8 @@ class _HistoricEarResultsState extends State<HistoricEarResults> {
             ((rightEarPercentage * 100).round()).toString() +
             "% superior to your left ear";
       } else if (leftEarPercentage > rightEarPercentage) {
-        earResults = earMessage + "left ear \n Which is "+
+        earResults = earMessage +
+            "left ear \n Which is " +
             ((leftEarPercentage * 100).round()).toString() +
             "% superior to your right ear";
       } else

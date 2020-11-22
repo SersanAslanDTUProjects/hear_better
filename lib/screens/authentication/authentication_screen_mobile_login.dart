@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart' hide Router;
 import 'package:hear_better/services/auth.dart';
 import 'package:hear_better/theme/app_theme.dart';

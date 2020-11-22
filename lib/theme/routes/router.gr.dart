@@ -22,7 +22,7 @@ import 'package:hear_better/screens/hearingtest/preperation/hearing_test_prepera
 import 'package:hear_better/screens/hearingtest/preperation/hearing_test_preperation_starttest_screen_mobile.dart';
 import 'package:hear_better/screens/hearingtest/preperation/hearing_test_screen_mobile.dart';
 import 'package:hear_better/screens/hearingtest/result/result_screen.dart';
-import 'file:///C:/Users/magnu/Documents/GitHub/hear_better/lib/screens/hearingtest/result/history/Historic_result_mobile.dart';
+import 'package:hear_better/screens/hearingtest/result/history/Historic_result_mobile.dart';
 import 'package:hear_better/models/audiogram.dart';
 
 class Router {

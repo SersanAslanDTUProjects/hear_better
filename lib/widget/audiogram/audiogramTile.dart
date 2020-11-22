@@ -1,10 +1,5 @@
-import 'package:charts_flutter/flutter.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:hear_better/models/audiogram.dart';
-import 'package:hear_better/widget/audiogram/LineChart.dart';
-import 'package:hear_better/screens/hearingtest/result/result_screen.dart';
-import 'package:hear_better/screens/hearingtest/result/result_screen.dart';
-import 'package:hear_better/screens/hearingtest/result/result_screen.dart';
 import 'package:hear_better/theme/routes/router.gr.dart';
 
 class AudiogramTile extends StatelessWidget {
