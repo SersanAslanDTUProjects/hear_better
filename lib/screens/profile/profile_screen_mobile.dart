@@ -170,7 +170,7 @@ class _ProfileScreenMobileState extends State<ProfileScreenMobile> {
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 50),
+                              SizedBox(height: 20),
                               Container(
                                 margin: EdgeInsets.all(30),
                                 child: SizedBox(
