@@ -6,18 +6,24 @@ import 'package:hear_better/screens/hearingtest/result/comparing_results.dart';
 import 'package:hear_better/services/database.dart';
 import 'package:hear_better/theme/app_theme.dart';
 import 'package:hear_better/theme/routes/router.gr.dart';
-import 'package:hear_better/widget/audiogram/LineChart.dart';
 import 'package:provider/provider.dart';
 
-class ResultScreenMobile extends StatefulWidget {
+import '../../../widget/audiogram/LineChart.dart';
+
+class HistoricResult extends StatefulWidget {
+  final Audiogram audiogram;
+
+  const HistoricResult({Key key, this.audiogram}) : super(key: key);
   @override
-  _ResultScreenMobileState createState() => _ResultScreenMobileState();
+  _HistoricResultState createState() => _HistoricResultState(audiogram);
 }
 
-class _ResultScreenMobileState extends State<ResultScreenMobile> {
-  final Audiogram audiogram = new Audiogram();
+class _HistoricResultState extends State<HistoricResult> {
+  final Audiogram audiogram;
 
   bool _isVisible = false;
+
+  _HistoricResultState(this.audiogram);
 
   void showSaveButton(HBUser user) {
     setState(() {
@@ -29,23 +35,23 @@ class _ResultScreenMobileState extends State<ResultScreenMobile> {
 
   Future<bool> onWillPop() async {
     return (await showDialog(
-          context: context,
-          builder: (context) => new AlertDialog(
-            title: new Text('Exit Result?'),
-            content: new Text('Sure?'),
-            actions: <Widget>[
-              new FlatButton(
-                onPressed: () => Router.navigator.pop(false),
-                child: new Text('No'),
-              ),
-              new FlatButton(
-                onPressed: () => Navigator.of(context)
-                    .popUntil(ModalRoute.withName(Router.wrapper)),
-                child: new Text('Yes'),
-              ),
-            ],
+      context: context,
+      builder: (context) => new AlertDialog(
+        title: new Text('Exit Result?'),
+        content: new Text('Sure?'),
+        actions: <Widget>[
+          new FlatButton(
+            onPressed: () => Router.navigator.pop(false),
+            child: new Text('No'),
           ),
-        )) ??
+          new FlatButton(
+            onPressed: () => Navigator.of(context)
+                .popUntil(ModalRoute.withName(Router.wrapper)),
+            child: new Text('Yes'),
+          ),
+        ],
+      ),
+    )) ??
         false;
   }
 

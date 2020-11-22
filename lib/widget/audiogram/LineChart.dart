@@ -1,5 +1,3 @@
-import 'dart:math';
-
 /// Example of a numeric combo chart with two series rendered as lines, and a
 /// third rendered as points along the top line with a different color.
 ///
