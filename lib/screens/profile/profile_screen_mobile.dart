@@ -54,15 +54,6 @@ class _ProfileScreenMobileState extends State<ProfileScreenMobile> {
                                 icon: Icon(Icons.arrow_back),
                                 color: AppTheme.colors.primaryBlue,
                               ),
-                              FlatButton(
-                                onPressed: () => null,
-                                child: Text(
-                                  "Edit",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: AppTheme.colors.black),
-                                ),
-                              ),
                             ],
                           ),
                         ),

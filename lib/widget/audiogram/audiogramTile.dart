@@ -1,7 +1,7 @@
 import 'package:charts_flutter/flutter.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:hear_better/models/audiogram.dart';
-import 'file:///C:/Users/magnu/Documents/GitHub/hear_better/lib/widget/audiogram/LineChart.dart';
+import 'package:hear_better/widget/audiogram/LineChart.dart';
 import 'package:hear_better/screens/hearingtest/result/result_screen.dart';
 import 'package:hear_better/screens/hearingtest/result/result_screen.dart';
 import 'package:hear_better/screens/hearingtest/result/result_screen.dart';
@@ -21,8 +21,8 @@ class AudiogramTile extends StatelessWidget {
         child: ListTile(
           title: Text(audiogram.audioUUID),
           //TODO: Implement show audiogram in a different screen
-          onTap: () => Router.navigator.pushNamed(
-              Router.resultScreen),
+          onTap: () => Router.navigator
+              .pushNamed(Router.historicResultScreen, arguments: audiogram),
         ),
       ),
     );

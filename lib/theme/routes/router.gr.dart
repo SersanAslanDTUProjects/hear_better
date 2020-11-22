@@ -22,6 +22,8 @@ import 'package:hear_better/screens/hearingtest/preperation/hearing_test_prepera
 import 'package:hear_better/screens/hearingtest/preperation/hearing_test_preperation_starttest_screen_mobile.dart';
 import 'package:hear_better/screens/hearingtest/preperation/hearing_test_screen_mobile.dart';
 import 'package:hear_better/screens/hearingtest/result/result_screen.dart';
+import 'package:hear_better/screens/hearingtest/result/Historic_result_mobile.dart';
+import 'package:hear_better/models/audiogram.dart';
 
 class Router {
   static const wrapper = '/';
@@ -46,6 +48,7 @@ class Router {
       '/hearing-test-preperation-start-test-screen-mobile';
   static const hearingTestMobileScreen = '/hearing-test-mobile-screen';
   static const resultScreen = '/result-screen';
+  static const historicResultScreen = '/historic-result-screen';
   static GlobalKey<NavigatorState> get navigatorKey =>
       getNavigatorKey<Router>();
   static NavigatorState get navigator => navigatorKey.currentState;
@@ -146,6 +149,15 @@ class Router {
         final typedArgs = args as Key;
         return MaterialPageRoute(
           builder: (_) => ResultScreen(key: typedArgs),
+          settings: settings,
+        );
+      case Router.historicResultScreen:
+        if (hasInvalidArgs<Audiogram>(args, isRequired: true)) {
+          return misTypedArgsRoute<Audiogram>(args);
+        }
+        final typedArgs = args as Audiogram;
+        return MaterialPageRoute(
+          builder: (_) => HistoricResult(audiogram: typedArgs),
           settings: settings,
         );
       default:

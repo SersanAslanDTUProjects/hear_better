@@ -18,7 +18,7 @@ import 'package:hear_better/screens/wrapper.dart';
 
 @autoRouter
 class $Router {
-  //flutter pub run build_runner watch --delete-conflicting-outputs
+  // flutter pub run build_runner watch --delete-conflicting-outputs
   @initial
   Wrapper wrapper;
   HomeScreen homeScreen;
