@@ -2,10 +2,12 @@ import 'package:flutter/material.dart' hide Router;
 import 'package:hear_better/models/audiogram.dart';
 import 'package:hear_better/screens/hearingtest/result/comparing_Ears.dart';
 import 'package:hear_better/screens/hearingtest/result/comparing_results.dart';
+import 'package:hear_better/screens/hearingtest/result/history/historic_comparing_Ears.dart';
+import 'package:hear_better/screens/hearingtest/result/history/historic_comparing_results.dart';
 import 'package:hear_better/theme/app_theme.dart';
 import 'package:hear_better/theme/routes/router.gr.dart';
 
-import '../../../widget/audiogram/LineChart.dart';
+import '../../../../widget/audiogram/LineChart.dart';
 
 class HistoricResult extends StatefulWidget {
   final Audiogram audiogram;
@@ -42,7 +44,7 @@ class _HistoricResultState extends State<HistoricResult> {
                 child: Container(
                   width: 300,
                   height: 200,
-                  child: Results(audiogram),
+                  child: HistoricResults(audiogram),
                 ),
               ),
             ),
@@ -58,7 +60,7 @@ class _HistoricResultState extends State<HistoricResult> {
                 child: Container(
                   width: 300,
                   height: 315,
-                  child: EarResults(audiogram),
+                  child: HistoricEarResults(audiogram),
                 ),
               ),
             ),
