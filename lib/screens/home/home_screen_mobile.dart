@@ -82,9 +82,10 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                                     onPressed: () => Router.navigator
                                         .pushNamed(Router.profileScreen),
                                     elevation: 2.0,
-                                    fillColor: Colors.red,
+                                    fillColor: AppTheme.colors.primaryBlue,
                                     child: Icon(
                                       Icons.person,
+                                      color: AppTheme.colors.white,
                                       size: 35.0,
                                     ),
                                     padding: EdgeInsets.all(15.0),

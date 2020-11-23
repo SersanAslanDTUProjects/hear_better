@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hear_better/models/audiogram.dart';
+import 'package:hear_better/theme/app_theme.dart';
 import 'package:hear_better/theme/colors.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -44,17 +45,17 @@ class _ResultsState extends State<Results> {
       if (userTestResult <= lowHearing) {
         resultsOfHearing =
             "Your hearing needs medical attention. Please seek doctor";
-        color = AppColors().primaryRed;
+        color = AppColors().netflixRed;
       } else if (userTestResult > lowHearing &&
           userTestResult < upperBoundForIdealHearing) {
         resultsOfHearing = "Your hearing is normal";
         color = AppColors().primaryYellow;
       } else if (userTestResult >= upperBoundForIdealHearing) {
         resultsOfHearing = "Very good hearing! Keep up!";
-        color = AppColors().primaryGreen;
+        color = AppColors().spotifyGreen;
       } else if (userTestResult < lowHearing) {
         resultsOfHearing = "Seek doctor immediatly!";
-        color = AppColors().primaryRed;
+        color = AppColors().netflixRed;
       }
     });
     return resultsOfHearing;
@@ -93,11 +94,15 @@ class _ResultsState extends State<Results> {
               lineHeight: 30,
               leading: Padding(
                 padding: EdgeInsets.only(right: 15),
-                child: Icon(Icons.close),
+                child: Icon(
+                    Icons.thumb_down_alt_rounded,
+                    color: AppTheme.colors.netflixRed,),
               ),
               trailing: Padding(
                 padding: EdgeInsets.only(left: 15),
-                child: Icon(Icons.insert_emoticon),
+                child: Icon(
+                  Icons.thumb_up_alt_rounded,
+                  color: AppTheme.colors.spotifyGreen,),
               ),
               progressColor: color,
               percent: userTestResult,

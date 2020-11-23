@@ -68,10 +68,11 @@ class _ProfileScreenMobileState extends State<ProfileScreenMobile> {
                                   child: RawMaterialButton(
                                     onPressed: null,
                                     elevation: 2.0,
-                                    fillColor: Colors.red,
+                                    fillColor: AppTheme.colors.primaryBlue,
                                     child: Icon(
                                       Icons.person,
                                       size: 40.0,
+                                      color: AppTheme.colors.white,
                                     ),
                                     padding: EdgeInsets.all(15.0),
                                     shape: CircleBorder(),

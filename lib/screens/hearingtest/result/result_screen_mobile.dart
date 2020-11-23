@@ -74,7 +74,7 @@ class _ResultScreenMobileState extends State<ResultScreenMobile> {
                 child: Center(
                   child: Container(
                     width: 300,
-                    height: 160,
+                    height: 175,
                     child: Results(audiogram),
                   ),
                 ),
