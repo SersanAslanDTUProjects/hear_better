@@ -54,7 +54,7 @@ class HearingTestMobileScreen extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  margin: EdgeInsets.fromLTRB(50, 40, 50, 50),
+                  margin: EdgeInsets.fromLTRB(50, 60, 50, 50),
                   child: TestProgressIndicator(),
                 ),
               ],
@@ -82,49 +82,46 @@ class _TestProgressIndicatorState extends State<TestProgressIndicator> {
 
   @override
   Widget build(BuildContext context) {
-    Center(
-      child: Container(
-        margin: EdgeInsets.fromLTRB(50, 40, 50, 50),
+    playLocal();
+
+    return
+      Container(
         child: Column(
           children: <Widget>[
-            SizedBox(height: 20),
             Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
                     alignment: Alignment.center,
                     padding:
                         EdgeInsets.symmetric(vertical: 0.0, horizontal: 50.0),
                     child: LinearProgressIndicator(
                         value: progress,
+                        minHeight: 7,
                         valueColor: AlwaysStoppedAnimation<Color>(
                             AppTheme.colors.primaryGreen)),
                   ),
-                ],
-              ),
-            ),
-            //SizedBox(height: 150),
+            SizedBox(height: 120),
             Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  FlatButton(
-                    onPressed: () {
-                      playLocal();
-                      setState(() {
-                        if (progress == 1) {
-                          Router.navigator.pushNamed(Router.resultScreen);
-                          progress++;
-                        } else {
-                          progress += 0.2;
-                        }
-                      });
-                    },
-                    child: Icon(
-                      Icons.hearing,
-                      size: 150.0,
-                      color: AppTheme.colors.primaryBlue,
+                  SizedBox(
+                    height: 175,
+                    child: FlatButton(
+                      onPressed: () {
+                        setState(() {
+                          if (progress == 0.8) {
+                            Router.navigator.pushReplacementNamed(Router.resultScreen);
+                            progress = 0;
+                          } else {
+                            playLocal();
+                            progress += 0.2;
+                          }
+                        });
+                      },
+                      child: Icon(
+                        Icons.hearing,
+                        size: 175,
+                        color: AppTheme.colors.primaryBlue,
+                      ),
                     ),
                   ),
                 ],
@@ -132,11 +129,6 @@ class _TestProgressIndicatorState extends State<TestProgressIndicator> {
             ),
           ],
         ),
-      ),
-    );
-    return LinearProgressIndicator(
-      value: progress,
-      valueColor: AlwaysStoppedAnimation<Color>(AppTheme.colors.primaryGreen),
-    );
+      );
   }
 }
