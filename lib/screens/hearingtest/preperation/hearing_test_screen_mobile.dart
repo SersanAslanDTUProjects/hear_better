@@ -96,10 +96,10 @@ class _TestProgressIndicatorState extends State<TestProgressIndicator> {
                     alignment: Alignment.center,
                     padding:
                         EdgeInsets.symmetric(vertical: 0.0, horizontal: 50.0),
-                    /*child: LinearProgressIndicator(
+                    child: LinearProgressIndicator(
                         value: progress,
                         valueColor: AlwaysStoppedAnimation<Color>(
-                            AppTheme.colors.primaryGreen)),*/
+                            AppTheme.colors.primaryGreen)),
                   ),
                 ],
               ),
