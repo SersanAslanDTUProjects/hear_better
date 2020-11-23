@@ -51,50 +51,9 @@ class HearingTestMobileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Center(
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(50, 40, 50, 50),
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(height: 20),
-                        Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Expanded(
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 0.0, horizontal: 50.0),
-                                  child: TestProgressIndicator(),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 150),
-                        Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              FlatButton(
-                                onPressed: () => null,
-                                onLongPress: () {
-                                  HapticFeedback.mediumImpact();
-                                  // TODO add secondary feed back if vibration not enabled or inform user enable vibration when boarding the app
-                                },
-                                child: Icon(
-                                  Icons.hearing,
-                                  size: 150.0,
-                                  color: AppTheme.colors.primaryBlue,
-                                ), // TODO animation or better icon
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(50, 60, 50, 50),
+                  child: TestProgressIndicator(),
                 ),
               ],
             ),
@@ -119,30 +78,55 @@ class _TestProgressIndicatorState extends State<TestProgressIndicator> {
     audioCache.clear('beep.mp3');
   }
 
-  // TODO make timer functionality external?
-  void startTimer(BuildContext context) {
-    playLocal();
-    new Timer(Duration(seconds: 1, milliseconds: 2), () {
-      setState(() {
-        if (progress == 1) {
-          Router.navigator.pushNamed(Router.resultScreen);
-          progress++;
-          // TODO navigate to results here?
-        } else {
-          progress += 0.2;
-        }
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    if (progress <= 1) {
-      startTimer(context);
-    }
-    return LinearProgressIndicator(
-      value: progress,
-      valueColor: AlwaysStoppedAnimation<Color>(AppTheme.colors.primaryGreen),
-    );
+    playLocal();
+
+    return
+      Container(
+        child: Column(
+          children: <Widget>[
+            Container(
+                    alignment: Alignment.center,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 0.0, horizontal: 50.0),
+                    child: LinearProgressIndicator(
+                        value: progress,
+                        minHeight: 7,
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                            AppTheme.colors.primaryGreen)),
+                  ),
+            SizedBox(height: 120),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: 175,
+                    child: FlatButton(
+                      onPressed: () {
+                        setState(() {
+                          if (progress == 0.8) {
+                            Router.navigator.pushReplacementNamed(Router.resultScreen);
+                            progress = 0;
+                          } else {
+                            playLocal();
+                            progress += 0.2;
+                          }
+                        });
+                      },
+                      child: Icon(
+                        Icons.hearing,
+                        size: 175,
+                        color: AppTheme.colors.primaryBlue,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
   }
 }

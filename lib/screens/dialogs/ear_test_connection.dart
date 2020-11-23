@@ -75,7 +75,7 @@ class _EarTestState extends State<EarTest> {
                       if (testingEar ==
                           "assets/images/test_connection_images/leftEar.png") {
                         Router.navigator.pushNamed(
-                            Router.hearingTestPreperationVolumeScreenMobile);
+                            Router.hearingTestPreperationStartTestScreenMobile);
                       }
 
                       leftEarTest();
