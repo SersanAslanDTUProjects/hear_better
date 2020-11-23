@@ -74,19 +74,18 @@ class _ResultScreenMobileState extends State<ResultScreenMobile> {
                 child: Center(
                   child: Container(
                     width: 300,
-                    height: 200,
+                    height: 160,
                     child: Results(audiogram),
                   ),
                 ),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(30, 30, 30, 10),
+                padding: EdgeInsets.fromLTRB(30, 0, 30, 10),
                 width: 200,
                 height: 400,
                 child: NumericComboLinePointChart.withSampleData(audiogram),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
                 child: Center(
                   child: Container(
                     width: 300,
