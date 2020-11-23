@@ -6,9 +6,8 @@ import 'package:hear_better/screens/hearingtest/result/comparing_results.dart';
 import 'package:hear_better/services/database.dart';
 import 'package:hear_better/theme/app_theme.dart';
 import 'package:hear_better/theme/routes/router.gr.dart';
+import 'package:hear_better/widget/audiogram/LineChart.dart';
 import 'package:provider/provider.dart';
-
-import 'LineChart.dart';
 
 class ResultScreenMobile extends StatefulWidget {
   @override

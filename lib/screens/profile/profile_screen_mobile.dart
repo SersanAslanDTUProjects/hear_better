@@ -6,7 +6,6 @@ import 'package:hear_better/theme/routes/router.gr.dart';
 import 'package:hear_better/widget/loading.dart';
 import 'package:provider/provider.dart';
 import 'package:hear_better/services/database.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 class ProfileScreenMobile extends StatefulWidget {
   @override
@@ -53,15 +52,6 @@ class _ProfileScreenMobileState extends State<ProfileScreenMobile> {
                                 onPressed: () => Router.navigator.pop(),
                                 icon: Icon(Icons.arrow_back),
                                 color: AppTheme.colors.primaryBlue,
-                              ),
-                              FlatButton(
-                                onPressed: () => null,
-                                child: Text(
-                                  "Edit",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: AppTheme.colors.black),
-                                ),
                               ),
                             ],
                           ),
@@ -170,7 +160,7 @@ class _ProfileScreenMobileState extends State<ProfileScreenMobile> {
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 50),
+                              SizedBox(height: 20),
                               Container(
                                 margin: EdgeInsets.all(30),
                                 child: SizedBox(

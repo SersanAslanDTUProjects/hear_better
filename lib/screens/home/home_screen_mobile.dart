@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart' hide Router;
 import 'package:hear_better/models/audiogram.dart';
 import 'package:hear_better/models/hbuser.dart';
-import 'package:hear_better/screens/hearingtest/result/comparing_Ears.dart';
 import 'package:hear_better/services/auth.dart';
 import 'package:hear_better/services/database.dart';
 import 'package:hear_better/theme/app_theme.dart';
 import 'package:hear_better/theme/routes/router.gr.dart';
 import 'package:hear_better/widget/audiogram/audiogramList.dart';
-import 'package:hear_better/widget/loading.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:hear_better/utils/ui_utils.dart';
 
 class HomeScreenMobile extends StatefulWidget {
   @override

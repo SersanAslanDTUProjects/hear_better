@@ -7,6 +7,7 @@ import 'package:hear_better/screens/hearingtest/preperation/hearing_test_prepera
 import 'package:hear_better/screens/hearingtest/preperation/hearing_test_preperation_starttest_screen_mobile.dart';
 import 'package:hear_better/screens/hearingtest/preperation/hearing_test_preperation_volume_screen_mobile.dart';
 import 'package:hear_better/screens/hearingtest/preperation/hearing_test_screen_mobile.dart';
+import 'package:hear_better/screens/hearingtest/result/history/Historic_result_mobile.dart';
 import 'package:hear_better/screens/hearingtest/result/result_screen.dart';
 import 'package:hear_better/screens/home/home_screen.dart';
 import 'package:hear_better/screens/home/home_screen_authenticate_mobile.dart';
@@ -17,7 +18,7 @@ import 'package:hear_better/screens/wrapper.dart';
 
 @autoRouter
 class $Router {
-  //flutter pub run build_runner watch --delete-conflicting-outputs
+  // flutter pub run build_runner watch --delete-conflicting-outputs
   @initial
   Wrapper wrapper;
   HomeScreen homeScreen;
@@ -37,4 +38,5 @@ class $Router {
       hearingTestPreperationStartTestScreenMobile;
   HearingTestMobileScreen hearingTestMobileScreen;
   ResultScreen resultScreen;
+  HistoricResult historicResultScreen;
 }

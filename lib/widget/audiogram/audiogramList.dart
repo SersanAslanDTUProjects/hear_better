@@ -1,5 +1,4 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:hear_better/models/audiogram.dart';
 import 'package:hear_better/theme/app_theme.dart';

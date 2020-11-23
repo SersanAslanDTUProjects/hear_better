@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Router;
 import 'package:hear_better/models/audiogram.dart';
+import 'package:hear_better/theme/routes/router.gr.dart';
 
 class AudiogramTile extends StatelessWidget {
   final Audiogram audiogram;
@@ -15,7 +16,8 @@ class AudiogramTile extends StatelessWidget {
         child: ListTile(
           title: Text(audiogram.audioUUID),
           //TODO: Implement show audiogram in a different screen
-          onTap: () => null,
+          onTap: () => Router.navigator
+              .pushNamed(Router.historicResultScreen, arguments: audiogram),
         ),
       ),
     );
