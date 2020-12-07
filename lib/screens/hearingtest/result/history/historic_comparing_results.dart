@@ -44,7 +44,7 @@ class _HistoricResultsState extends State<HistoricResults> {
     setState(() {
       if (userTestResult <= lowHearing) {
         resultsOfHearing =
-        "Your hearing needs medical attention. Please seek doctor";
+            "Your hearing needs medical attention. Please seek doctor";
         color = AppColors().netflixRed;
       } else if (userTestResult > lowHearing &&
           userTestResult < upperBoundForIdealHearing) {
@@ -69,7 +69,8 @@ class _HistoricResultsState extends State<HistoricResults> {
       body: Center(
         child: Column(
           children: <Widget>[
-            Text("Result of test \n" +audiogram.audioUUID,
+            Text(
+              "Result of test \n" + audiogram.audioUUID,
               style: TextStyle(
                 fontSize: 24,
               ),
@@ -94,14 +95,16 @@ class _HistoricResultsState extends State<HistoricResults> {
               leading: Padding(
                 padding: EdgeInsets.only(right: 15),
                 child: Icon(
-                  Icons.thumb_down_alt_rounded,
-                  color: AppTheme.colors.netflixRed,),
+                  Icons.thumb_down,
+                  color: AppTheme.colors.netflixRed,
+                ),
               ),
               trailing: Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Icon(
-                  Icons.thumb_up_alt_rounded,
-                  color: AppTheme.colors.spotifyGreen,),
+                  Icons.thumb_up,
+                  color: AppTheme.colors.spotifyGreen,
+                ),
               ),
               progressColor: color,
               percent: userTestResult,

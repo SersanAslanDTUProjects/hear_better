@@ -95,14 +95,16 @@ class _ResultsState extends State<Results> {
               leading: Padding(
                 padding: EdgeInsets.only(right: 15),
                 child: Icon(
-                    Icons.thumb_down_alt_rounded,
-                    color: AppTheme.colors.netflixRed,),
+                  Icons.thumb_down,
+                  color: AppTheme.colors.netflixRed,
+                ),
               ),
               trailing: Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Icon(
-                  Icons.thumb_up_alt_rounded,
-                  color: AppTheme.colors.spotifyGreen,),
+                  Icons.thumb_up,
+                  color: AppTheme.colors.spotifyGreen,
+                ),
               ),
               progressColor: color,
               percent: userTestResult,
