@@ -17,8 +17,8 @@ class _AuthenticationScreenMobileLoginState
   bool _loading = false;
 
   String error = '';
-  String email = '';
-  String password = '';
+  String email = 's123456@student.dtu.dk';
+  String password = 's123456';
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +77,8 @@ class _AuthenticationScreenMobileLoginState
                               children: <Widget>[
                                 Container(
                                   child: TextFormField(
+                                    //TODO: Remember to remove this, when apps published
+                                    initialValue: email,
                                     validator: (val) {
                                       Pattern pattern = r'@';
                                       RegExp regex = RegExp(pattern);
@@ -103,6 +105,8 @@ class _AuthenticationScreenMobileLoginState
                                 ),
                                 Container(
                                   child: TextFormField(
+                                    //TODO: Remember to remove this, when apps published
+                                    initialValue: password,
                                     validator: (val) => val.length < 6
                                         ? "Enter a password 6+ characters long"
                                         : null,
