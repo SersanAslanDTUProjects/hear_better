@@ -12,25 +12,6 @@ String resultsOfHearing = "----";
 Color color = Colors.grey;
 Audiogram audiogram;
 
-void calculateUserScore(List leftEar, List rightEar) {
-  int goodHearing = 0;
-  for (int i = 0; i < leftEar.length; i++) {
-    print(leftEar[i]);
-    print(rightEar[i]);
-    if (leftEar[i] <= 20) {
-      goodHearing++;
-    }
-    if (rightEar[i] <= 20) {
-      goodHearing++;
-    }
-  }
-  userTestResult = goodHearing / 12;
-  if (userTestResult == 0.0) {
-    userTestResult = 0.05;
-  }
-  print(userTestResult);
-}
-
 class Results extends StatefulWidget {
   Results(Audiogram audiogram2) {
     audiogram = audiogram2;
@@ -114,5 +95,21 @@ class _ResultsState extends State<Results> {
         ),
       ),
     );
+  }
+}
+
+void calculateUserScore(List leftEar, List rightEar) {
+  int goodHearing = 0;
+  for (int i = 0; i < leftEar.length; i++) {
+    if (leftEar[i] <= 20) {
+      goodHearing++;
+    }
+    if (rightEar[i] <= 20) {
+      goodHearing++;
+    }
+  }
+  userTestResult = goodHearing / 12;
+  if (userTestResult == 0.0) {
+    userTestResult = 0.05;
   }
 }

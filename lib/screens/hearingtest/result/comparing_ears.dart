@@ -21,33 +21,7 @@ class EarResults extends StatefulWidget {
 class _EarResultsState extends State<EarResults> {
   void comparingEars(List rightEar, List leftEar) {
     setState(() {
-      double rightEarCounter = 0;
-      double leftEarCounter = 0;
-      for (int i = 0; i < rightEar.length; i++) {
-        if (leftEar[i] < rightEar[i]) {
-          leftEarCounter++;
-        } else if (rightEar[i] < leftEar[i]) {
-          rightEarCounter++;
-        } else {
-          rightEarCounter++;
-          leftEarCounter++;
-        }
-      }
-      rightEarPercentage = rightEarCounter / rightEar.length;
-      print(rightEarPercentage);
-      leftEarPercentage = leftEarCounter / leftEar.length;
-      print(leftEarPercentage);
-      if (rightEarPercentage > leftEarPercentage) {
-        earResults = earMessage +
-            "right ear \n Which scored " +
-            ((rightEarPercentage * 100).round()).toString() +
-            "% compared to your left ear";
-      } else if (leftEarPercentage > rightEarPercentage) {
-        earResults = earMessage + "left ear \n Which scored "+
-            ((leftEarPercentage * 100).round()).toString() +
-            "% compared to your right ear";
-      } else
-        earResults = " Both your ears have the same hearing percentage";
+      calculateEarsResults(rightEar, leftEar);
     });
   }
 
@@ -77,7 +51,8 @@ class _EarResultsState extends State<EarResults> {
               ),
               trailing: Padding(
                 padding: EdgeInsets.only(left: 15),
-                child: Text((rightEarPercentage*100).round().toString() + "% "),
+                child:
+                    Text((rightEarPercentage * 100).round().toString() + "% "),
               ),
               progressColor: AppColors().primaryRed,
               linearStrokeCap: LinearStrokeCap.roundAll,
@@ -96,7 +71,8 @@ class _EarResultsState extends State<EarResults> {
               ),
               trailing: Padding(
                 padding: EdgeInsets.only(left: 15),
-                child: Text((leftEarPercentage*100).round().toString() + "% "),
+                child:
+                    Text((leftEarPercentage * 100).round().toString() + "% "),
               ),
               progressColor: AppColors().primaryBlue,
               linearStrokeCap: LinearStrokeCap.roundAll,
@@ -114,4 +90,35 @@ class _EarResultsState extends State<EarResults> {
       ),
     );
   }
+}
+
+void calculateEarsResults(List rightEar, List leftEar) {
+  double rightEarCounter = 0;
+  double leftEarCounter = 0;
+  for (int i = 0; i < rightEar.length; i++) {
+    if (leftEar[i] < rightEar[i]) {
+      leftEarCounter++;
+    } else if (rightEar[i] < leftEar[i]) {
+      rightEarCounter++;
+    } else {
+      rightEarCounter++;
+      leftEarCounter++;
+    }
+  }
+  rightEarPercentage = rightEarCounter / rightEar.length;
+  print(rightEarPercentage);
+  leftEarPercentage = leftEarCounter / leftEar.length;
+  print(leftEarPercentage);
+  if (rightEarPercentage > leftEarPercentage) {
+    earResults = earMessage +
+        "right ear \n Which scored " +
+        ((rightEarPercentage * 100).round()).toString() +
+        "% compared to your left ear";
+  } else if (leftEarPercentage > rightEarPercentage) {
+    earResults = earMessage +
+        "left ear \n Which scored " +
+        ((leftEarPercentage * 100).round()).toString() +
+        "% compared to your right ear";
+  } else
+    earResults = " Both your ears have the same hearing percentage";
 }
